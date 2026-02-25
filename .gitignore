@@ -33,3 +33,5 @@ lerna-debug.log*
 .env.local
 .env.production
 *.local
+*storybook.log
+storybook-static
