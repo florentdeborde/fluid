@@ -63,22 +63,6 @@ export interface ButtonProps
     extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
     VariantProps<typeof buttonVariants> {
     asChild?: boolean;
-    /** Custom background color */
-    cBgColor?: string;
-    /** Custom text color */
-    cTextColor?: string;
-    /** Custom border color */
-    cBorderColor?: string;
-    /** Custom border width (e.g. \"2px\") */
-    cBorderWidth?: string;
-    /** Custom background color on hover */
-    cHoverBgColor?: string;
-    /** Custom text color on hover */
-    cHoverTextColor?: string;
-    /** Custom border color on hover */
-    cHoverBorderColor?: string;
-    /** Custom border width on hover (e.g. \"2px\") */
-    cHoverBorderWidth?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -88,46 +72,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         color,
         size,
         asChild = false,
-        cBgColor,
-        cTextColor,
-        cBorderColor,
-        cBorderWidth,
-        cHoverBgColor,
-        cHoverTextColor,
-        cHoverBorderColor,
-        cHoverBorderWidth,
-        style,
         ...props
     }, ref) => {
         const Comp = asChild ? Slot : "button";
 
-        // Inject CSS variables for colors
-        const customStyle = {
-            ...style,
-            ...(cBgColor ? { "--btn-bg": cBgColor } : {}),
-            ...(cTextColor ? { "--btn-text": cTextColor } : {}),
-            ...(cBorderColor ? { "--btn-border": cBorderColor } : {}),
-            ...(cBorderWidth ? { "--btn-border-width": cBorderWidth } : {}),
-            ...(cHoverBgColor ? { "--btn-hover-bg": cHoverBgColor } : {}),
-            ...(cHoverTextColor ? { "--btn-hover-text": cHoverTextColor } : {}),
-            ...(cHoverBorderColor ? { "--btn-hover-border": cHoverBorderColor } : {}),
-            ...(cHoverBorderWidth ? { "--btn-hover-border-width": cHoverBorderWidth } : {}),
-        } as React.CSSProperties;
-
         return (
             <Comp
-                className={cn(
-                    buttonVariants({ variant, color, size, className }),
-                    cBgColor && "bg-[var(--btn-bg)]",
-                    cTextColor && "text-[var(--btn-text)]",
-                    cBorderColor && "border-[var(--btn-border)]",
-                    cBorderWidth && "border-[length:var(--btn-border-width)]",
-                    cHoverBgColor && "hover:bg-[var(--btn-hover-bg)]",
-                    cHoverTextColor && "hover:text-[var(--btn-hover-text)]",
-                    cHoverBorderColor && "hover:border-[var(--btn-hover-border)]",
-                    cHoverBorderWidth && "hover:border-[length:var(--btn-hover-border-width)]"
-                )}
-                style={customStyle}
+                className={cn(buttonVariants({ variant, color, size, className }))}
                 ref={ref}
                 {...props}
             />

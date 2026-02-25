@@ -33,15 +33,6 @@ const meta: Meta<typeof Button> = {
             control: 'boolean',
             table: { category: 'Base' },
         },
-        // Custom Props Section
-        cBgColor: { control: 'color', table: { category: 'Custom' } },
-        cTextColor: { control: 'color', table: { category: 'Custom' } },
-        cBorderColor: { control: 'color', table: { category: 'Custom' } },
-        cBorderWidth: { control: 'text', table: { category: 'Custom' } },
-        cHoverBgColor: { control: 'color', table: { category: 'Custom' } },
-        cHoverTextColor: { control: 'color', table: { category: 'Custom' } },
-        cHoverBorderColor: { control: 'color', table: { category: 'Custom' } },
-        cHoverBorderWidth: { control: 'text', table: { category: 'Custom' } },
     },
 };
 
@@ -80,14 +71,7 @@ export const DestructiveWithIcon: Story = {
 export const Custom: Story = {
     args: {
         children: 'Custom Yellow',
-        cBgColor: '#fbe72b',
-        cTextColor: '#000000',
-        cBorderColor: '#000000',
-        cBorderWidth: '1px',
-        cHoverBgColor: '#fbe72b',
-        cHoverTextColor: '#000000',
-        cHoverBorderColor: '#000000',
-        cHoverBorderWidth: '2px',
+        className: 'bg-[#fbe72b] text-black border-black border hover:bg-[#fbe72b]/90 hover:border-2',
     },
 };
 

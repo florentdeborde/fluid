@@ -1,15 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Loader } from './loader';
+import { Loader, LoaderSpinner, LoaderText } from './loader';
 
 const meta: Meta<typeof Loader> = {
     title: 'Components/Loader',
     component: Loader,
     tags: ['autodocs'],
     argTypes: {
-        text: {
-            control: 'text',
-            table: { category: 'Base' }
-        },
         size: {
             control: 'select',
             options: ['sm', 'md', 'lg'],
@@ -20,48 +16,76 @@ const meta: Meta<typeof Loader> = {
             options: ['primary', 'destructive', 'success', 'neutral'],
             table: { category: 'Base' }
         },
-        cColor: {
-            control: 'color',
-            table: { category: 'Custom' }
-        }
     },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Primary: Story = {
+    render: (args) => (
+        <Loader {...args}>
+            <LoaderSpinner />
+            <LoaderText>Loading...</LoaderText>
+        </Loader>
+    ),
     args: {
-        text: 'Loading...',
         size: 'md',
         color: 'primary',
     },
 };
 
 export const Success: Story = {
+    render: (args) => (
+        <Loader {...args}>
+            <LoaderSpinner />
+            <LoaderText>Updating...</LoaderText>
+        </Loader>
+    ),
     args: {
-        text: 'Update complete!',
         color: 'success',
     },
 };
 
 export const Destructive: Story = {
+    render: (args) => (
+        <Loader {...args}>
+            <LoaderSpinner />
+            <LoaderText>Deleting...</LoaderText>
+        </Loader>
+    ),
     args: {
-        text: 'System failing...',
         color: 'destructive',
     },
 };
 
 export const Custom: Story = {
+    render: (args) => (
+        <Loader {...args}>
+            <LoaderSpinner />
+            <LoaderText>Vibrant Orange</LoaderText>
+        </Loader>
+    ),
     args: {
-        text: 'Vibrant Orange',
-        cColor: '#ff6b00',
+        className: '[--loader-color:#ff6b00]',
     },
 };
 
-export const SmallSuccess: Story = {
-    args: {
-        size: 'sm',
-        color: 'success',
-    },
+export const Sizes: Story = {
+    render: (args) => (
+        <div className="flex items-end gap-12">
+            <Loader {...args} size="sm">
+                <LoaderSpinner />
+                <LoaderText>Small</LoaderText>
+            </Loader>
+            <Loader {...args} size="md">
+                <LoaderSpinner />
+                <LoaderText>Medium</LoaderText>
+            </Loader>
+            <Loader {...args} size="lg">
+                <LoaderSpinner />
+                <LoaderText>Large</LoaderText>
+            </Loader>
+        </div>
+    ),
 };

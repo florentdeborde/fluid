@@ -51,70 +51,78 @@ ShellBackLink.displayName = "ShellBackLink";
 /*                                    Shell                                   */
 /* -------------------------------------------------------------------------- */
 
-export interface ShellProps extends React.HTMLAttributes<HTMLDivElement> {
-    /** The main title of the page */
-    title?: string;
-    /** A secondary description or subtitle */
-    subtitle?: string;
-    /** Max width of the content container */
-    containerSize?: "sm" | "md" | "lg" | "xl" | "full";
-    /** The path or URL to go back to. Providing this will show the back link. */
-    backTo?: string;
-    /** Label for the back link */
-    backLabel?: string;
-    /** Slot for an optional SEO component */
-    seo?: React.ReactNode;
-    /** Page content */
-    children: React.ReactNode;
-}
-
 const containerSizes = {
     sm: "max-w-3xl",
     md: "max-w-5xl",
     lg: "max-w-7xl",
-    xl: "max-w-(--breakpoint-xl)",
+    xl: "max-w-screen-xl",
     full: "max-w-full",
 };
 
+export interface ShellProps extends React.HTMLAttributes<HTMLDivElement> {
+    /** Max width of the content container */
+    containerSize?: keyof typeof containerSizes;
+}
+
+/**
+ * Main wrapper for page layouts.
+ */
 const Shell = React.forwardRef<HTMLDivElement, ShellProps>(
-    ({ title, subtitle, containerSize = "md", backTo, backLabel, seo, children, className, ...props }, ref) => {
+    ({ containerSize = "md", children, className, ...props }, ref) => {
         return (
             <div
                 ref={ref}
                 className={cn(
-                    "container mx-auto px-6 py-12 relative",
+                    "container mx-auto px-6 py-12 relative flex flex-col gap-0",
                     containerSizes[containerSize],
                     className
                 )}
                 {...props}
             >
-                {seo}
-
-                {backTo && (
-                    <ShellBackLink backTo={backTo} label={backLabel} />
-                )}
-
-                <main className="w-full">
-                    {(title || subtitle) && (
-                        <header className="mb-8 mt-4">
-                            {title && (
-                                <h1 className="text-4xl font-bold tracking-tight text-neutral-900 mb-2">
-                                    {title}
-                                </h1>
-                            )}
-                            {subtitle && (
-                                <div className="text-xl text-neutral-500">
-                                    {subtitle}
-                                </div>
-                            )}
-                        </header>
-                    )}
-                    {children}
-                </main>
+                {children}
             </div>
         );
     }
 );
 Shell.displayName = "Shell";
 
-export { Shell, ShellBackLink };
+/**
+ * Header section for Title and Subtitle.
+ */
+const ShellHeader = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <header className={cn("mb-8 mt-4 flex flex-col gap-2", className)} {...props} />
+);
+ShellHeader.displayName = "ShellHeader";
+
+/**
+ * Main Page Title (H1).
+ */
+const ShellTitle = ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h1 className={cn("text-4xl font-bold tracking-tight text-neutral-900", className)} {...props} />
+);
+ShellTitle.displayName = "ShellTitle";
+
+/**
+ * Page Subtitle or description.
+ */
+const ShellSubtitle = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+    <div className={cn("text-xl text-neutral-500", className)} {...props} />
+);
+ShellSubtitle.displayName = "ShellSubtitle";
+
+/**
+ * Wrapper for the main page content.
+ */
+const ShellContent = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <main className={cn("w-full", className)} {...props} />
+);
+ShellContent.displayName = "ShellContent";
+
+export {
+    Shell,
+    ShellHeader,
+    ShellTitle,
+    ShellSubtitle,
+    ShellContent,
+    ShellBackLink
+};

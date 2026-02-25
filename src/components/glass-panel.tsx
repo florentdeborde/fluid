@@ -29,40 +29,21 @@ const glassVariants = cva(
 );
 
 export interface GlassPanelProps
-    extends Omit<React.HTMLAttributes<HTMLDivElement>, "color">,
+    extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof glassVariants> {
     /** The content to be rendered inside the panel */
     children: React.ReactNode;
-    /** Custom background color (overrides default) */
-    cBgColor?: string;
-    /** Custom border color (overrides default) */
-    cBorderColor?: string;
-    /** Custom box shadow string (overrides default) */
-    cShadow?: string;
-    /** Custom backdrop blur (overrides default) */
-    cBlur?: string;
-    /** Custom border radius (overrides default) */
-    cRadius?: string;
 }
 
 /**
  * A fully self-contained premium glassmorphism panel.
  */
 const GlassPanel = React.forwardRef<HTMLDivElement, GlassPanelProps>(
-    ({ children, className, size, cBgColor, cBorderColor, cShadow, cBlur, cRadius, style, ...props }, ref) => {
+    ({ children, className, size, ...props }, ref) => {
         return (
             <div
                 ref={ref}
                 className={cn(glassVariants({ size, className }))}
-                style={{
-                    /* Les props "cProp" écrasent les variables définies dans className */
-                    ...(cBgColor && { "--glass-bg": cBgColor }),
-                    ...(cBorderColor && { "--glass-border": cBorderColor }),
-                    ...(cShadow && { "--glass-shadow": cShadow }),
-                    ...(cBlur && { "--glass-blur": cBlur }),
-                    ...(cRadius && { "--glass-radius": cRadius }),
-                    ...style,
-                } as React.CSSProperties}
                 {...props}
             >
                 {children}

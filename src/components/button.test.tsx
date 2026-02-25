@@ -23,18 +23,15 @@ describe('Button', () => {
         expect(link).toHaveClass('bg-blue-600');
     });
 
-    it('applies custom background and text colors via CSS variables', () => {
+    it('merges custom className correctly', () => {
         const { getByRole } = render(
-            <Button cBgColor="#ff0000" cTextColor="#00ff00">
+            <Button className="custom-class bg-red-500">
                 Custom
             </Button>
         );
         const button = getByRole('button');
-
-        // Check if the variables are set in the style attribute
-        const style = button.getAttribute('style');
-        expect(style).toContain('--btn-bg: #ff0000');
-        expect(style).toContain('--btn-text: #00ff00');
+        expect(button).toHaveClass('custom-class');
+        expect(button).toHaveClass('bg-red-500');
     });
 
     it('is disabled when the disabled prop is passed', () => {

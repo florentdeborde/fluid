@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Shell } from './shell';
+import { Shell, ShellHeader, ShellTitle, ShellSubtitle, ShellContent, ShellBackLink } from './shell';
 
 const meta: Meta<typeof Shell> = {
     title: 'Layout/Shell',
@@ -9,28 +9,9 @@ const meta: Meta<typeof Shell> = {
     },
     tags: ['autodocs'],
     argTypes: {
-        title: {
-            control: 'text',
-            table: { category: 'Base' },
-        },
-        subtitle: {
-            control: 'text',
-            table: { category: 'Base' },
-        },
-        backTo: {
-            control: 'text',
-            table: { category: 'Base' },
-        },
-        backLabel: {
-            control: 'text',
-            table: { category: 'Base' },
-        },
         containerSize: {
             control: 'select',
             options: ['sm', 'md', 'lg', 'xl', 'full'],
-            table: { category: 'Base' },
-        },
-        seo: {
             table: { category: 'Base' },
         },
         children: {
@@ -54,21 +35,35 @@ const PlaceholderContent = (
 );
 
 export const Default: Story = {
+    render: (args) => (
+        <Shell {...args}>
+            <ShellBackLink href="#" />
+            <ShellHeader>
+                <ShellTitle>Composable Shell</ShellTitle>
+                <ShellSubtitle>An overview of the development process.</ShellSubtitle>
+            </ShellHeader>
+            <ShellContent>
+                {PlaceholderContent}
+            </ShellContent>
+        </Shell>
+    ),
     args: {
-        title: 'With Back Link',
-        subtitle: 'An overview of the development process.',
-        backTo: '#',
-        backLabel: 'Back',
         containerSize: 'md',
-        children: PlaceholderContent,
     },
 };
 
 export const Minimal: Story = {
+    render: (args) => (
+        <Shell {...args}>
+            <ShellHeader>
+                <ShellTitle>Simple Layout</ShellTitle>
+            </ShellHeader>
+            <ShellContent>
+                {PlaceholderContent}
+            </ShellContent>
+        </Shell>
+    ),
     args: {
-        title: 'No Back Link',
-        subtitle: 'An overview of the development process.',
         containerSize: 'sm',
-        children: PlaceholderContent,
     },
 };

@@ -1,24 +1,32 @@
 import '@testing-library/jest-dom/vitest';
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { Shell } from './shell';
+import { Shell, ShellHeader, ShellTitle, ShellSubtitle, ShellContent, ShellBackLink } from './shell';
 
 describe('Shell', () => {
-    it('renders title and subtitle', () => {
+    it('renders title and subtitle using composable parts', () => {
         render(
-            <Shell title="Hello World" subtitle="Welcome to Fluid">
-                <div>Content</div>
+            <Shell>
+                <ShellHeader>
+                    <ShellTitle>Hello World</ShellTitle>
+                    <ShellSubtitle>Welcome to Fluid</ShellSubtitle>
+                </ShellHeader>
+                <ShellContent>
+                    <div>Content</div>
+                </ShellContent>
             </Shell>
         );
 
         expect(screen.getByText('Hello World')).toBeInTheDocument();
         expect(screen.getByText('Welcome to Fluid')).toBeInTheDocument();
+        expect(screen.getByText('Content')).toBeInTheDocument();
     });
 
-    it('renders the back link when backTo is provided', () => {
+    it('renders the back link', () => {
         render(
-            <Shell backTo="/home" backLabel="Go Home">
-                <div>Content</div>
+            <Shell>
+                <ShellBackLink href="/home" label="Go Home" />
+                <ShellContent>Content</ShellContent>
             </Shell>
         );
 
@@ -27,20 +35,12 @@ describe('Shell', () => {
         expect(link).toHaveAttribute('href', '/home');
     });
 
-    it('hides the back link when backTo is not provided', () => {
-        render(
-            <Shell>
-                <div>Content</div>
-            </Shell>
-        );
-
-        expect(screen.queryByRole('link')).not.toBeInTheDocument();
-    });
-
     it('renders children correctly', () => {
         render(
             <Shell>
-                <div data-testid="child">Deep Content</div>
+                <ShellContent>
+                    <div data-testid="child">Deep Content</div>
+                </ShellContent>
             </Shell>
         );
 
@@ -51,7 +51,7 @@ describe('Shell', () => {
     it('applies the correct max-width class based on containerSize', () => {
         const { container } = render(
             <Shell containerSize="sm">
-                <div>Content</div>
+                <ShellContent>Content</ShellContent>
             </Shell>
         );
 
