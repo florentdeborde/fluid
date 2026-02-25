@@ -56,20 +56,6 @@ export const Primary: Story = {
     },
 };
 
-export const CustomYellow: Story = {
-    args: {
-        children: 'Custom Yellow',
-        cBgColor: '#fbe72b',
-        cTextColor: '#000000',
-        cBorderColor: '#000000',
-        cBorderWidth: '1px',
-        cHoverBgColor: '#fbe72b',
-        cHoverTextColor: '#000000',
-        cHoverBorderColor: '#000000',
-        cHoverBorderWidth: '2px',
-    },
-};
-
 export const Success: Story = {
     args: {
         children: 'Success Button',
@@ -88,6 +74,20 @@ export const DestructiveWithIcon: Story = {
         ),
         variant: 'solid',
         color: 'destructive',
+    },
+};
+
+export const Custom: Story = {
+    args: {
+        children: 'Custom Yellow',
+        cBgColor: '#fbe72b',
+        cTextColor: '#000000',
+        cBorderColor: '#000000',
+        cBorderWidth: '1px',
+        cHoverBgColor: '#fbe72b',
+        cHoverTextColor: '#000000',
+        cHoverBorderColor: '#000000',
+        cHoverBorderWidth: '2px',
     },
 };
 

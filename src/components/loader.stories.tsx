@@ -38,13 +38,6 @@ export const Default: Story = {
     },
 };
 
-export const Destructive: Story = {
-    args: {
-        text: 'System failing...',
-        color: 'destructive',
-    },
-};
-
 export const Success: Story = {
     args: {
         text: 'Update complete!',
@@ -52,7 +45,14 @@ export const Success: Story = {
     },
 };
 
-export const CustomColor: Story = {
+export const Destructive: Story = {
+    args: {
+        text: 'System failing...',
+        color: 'destructive',
+    },
+};
+
+export const Custom: Story = {
     args: {
         text: 'Vibrant Orange',
         cColor: '#ff6b00',
