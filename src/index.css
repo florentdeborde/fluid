@@ -1,1 +1,37 @@
 @import "tailwindcss";
+
+@theme {
+    --color-primary: var(--blue-600);
+}
+
+@keyframes pulse-custom {
+
+    0%,
+    100% {
+        transform: scale(0.8);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.6;
+    }
+}
+
+@keyframes spin-custom {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-pulse-custom {
+    animation: pulse-custom 1.5s ease-in-out infinite;
+}
+
+.animate-spin-custom {
+    animation: spin-custom 1s cubic-bezier(0.55, 0.2, 0.2, 0.8) infinite;
+}
