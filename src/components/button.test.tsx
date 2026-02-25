@@ -8,7 +8,7 @@ describe('Button', () => {
         render(<Button>Click me</Button>);
         const button = screen.getByRole('button', { name: /click me/i });
         expect(button).toBeInTheDocument();
-        expect(button).toHaveClass('bg-blue-600'); // Default primary solid
+        expect(button).toHaveClass('fluid:bg-blue-600'); // Default primary solid
     });
 
     it('renders as a different element when asChild is true', () => {
@@ -20,8 +20,9 @@ describe('Button', () => {
         const link = screen.getByRole('link', { name: /link button/i });
         expect(link).toBeInTheDocument();
         expect(link).toHaveAttribute('href', '/test');
-        expect(link).toHaveClass('bg-blue-600');
+        expect(link).toHaveClass('fluid:bg-blue-600');
     });
+
 
     it('merges custom className correctly', () => {
         const { getByRole } = render(

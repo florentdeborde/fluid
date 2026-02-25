@@ -59,7 +59,7 @@ export const DestructiveWithIcon: Story = {
     args: {
         children: (
             <>
-                <Trash2 className="size-4" />
+                <Trash2 className="fluid:size-4" />
                 Delete
             </>
         ),
@@ -71,15 +71,15 @@ export const DestructiveWithIcon: Story = {
 export const Custom: Story = {
     args: {
         children: 'Custom Yellow',
-        className: 'bg-[#fbe72b] text-black border-black border hover:bg-[#fbe72b]/90 hover:border-2',
+        className: 'fluid:bg-[#fbe72b] fluid:text-black fluid:border-black fluid:border fluid:hover:bg-[#fbe72b]/90 fluid:hover:border-2',
     },
 };
 
 export const Sizes: Story = {
     render: () => (
-        <div className="flex items-center gap-4">
+        <div className="fluid:flex fluid:items-center fluid:gap-4">
             <Button size="icon" variant="outline">
-                <Rocket className="size-4" />
+                <Rocket className="fluid:size-4" />
             </Button>
             <Button size="sm">Small</Button>
             <Button size="default">Default</Button>

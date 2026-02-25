@@ -12,8 +12,9 @@ describe('Loader Component', () => {
         );
         const loader = screen.getByRole('status');
         expect(loader).toBeInTheDocument();
-        expect(loader.querySelector('.animate-spin-custom')).toBeInTheDocument();
-        expect(loader.querySelector('.animate-pulse-custom')).toBeInTheDocument();
+        expect(loader.querySelector('.fluid\\:animate-spin-custom')).toBeInTheDocument();
+        expect(loader.querySelector('.fluid\\:animate-pulse-custom')).toBeInTheDocument();
+
     });
 
     it('merges custom className correctly', () => {
@@ -43,13 +44,13 @@ describe('Loader Component', () => {
             </Loader>
         );
         const loader = screen.getByRole('status');
-        expect(loader.querySelector('.size-8')).toBeInTheDocument();
+        expect(loader.querySelector('.fluid\\:size-8')).toBeInTheDocument();
 
         rerender(
             <Loader size="lg">
                 <LoaderSpinner />
             </Loader>
         );
-        expect(loader.querySelector('.size-20')).toBeInTheDocument();
+        expect(loader.querySelector('.fluid\\:size-20')).toBeInTheDocument();
     });
 });

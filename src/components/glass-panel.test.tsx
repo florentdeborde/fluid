@@ -11,11 +11,13 @@ describe('GlassPanel Size & Props', () => {
 
     it('applies size variants correctly', () => {
         const { rerender } = render(<GlassPanel size="sm">Small</GlassPanel>);
-        expect(screen.getByText('Small')).toHaveClass('p-4');
+        expect(screen.getByText('Small')).toHaveClass('fluid:p-4');
 
         rerender(<GlassPanel size="lg">Large</GlassPanel>);
-        expect(screen.getByText('Large')).toHaveClass('p-12');
+        expect(screen.getByText('Large')).toHaveClass('fluid:p-12');
+
     });
+
 
     it('merges custom className correctly', () => {
         render(

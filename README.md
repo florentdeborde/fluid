@@ -5,12 +5,13 @@
 ![Vite 7.3](https://img.shields.io/badge/Vite-7.3-646CFF?style=flat-square&logo=vite)
 ![Tailwind 4](https://img.shields.io/badge/Tailwind-4-06B6D4?style=flat-square&logo=tailwindcss)
 
-> **FL**orent **UI** **D**eborde — A high-performance, accessible, and elegant React component library.
+> **FL**orent **UI** **D**eborde — A high-performance, accessible, and elegant React 19 component library.
 
 ## 📑 Table of Contents
 
 - [🎯 Features](#-features)
 - [💻 Installation](#-installation)
+- [🎨 Styling & Encapsulation](#-styling--encapsulation)
 - [🔧 Environment Configuration](#-environment-configuration)
 - [📂 Project Structure](#️-project-structure)
 - [🧱 Tech Stack](#-tech-stack)
@@ -27,6 +28,35 @@
 
 ## 💻 Installation
 ```npm install @florentdeborde/fluid```
+
+## 🎨 Styling & Encapsulation
+
+**Fluid** uses **Tailwind CSS v4** with a strict encapsulation strategy. To avoid conflicts with other CSS on your page, all Tailwind utility classes in this library are prefixed with `fluid:`.
+
+### Rule of the Prefix
+If you want to override or extend styles via `className`, you **must** use the `fluid:` prefix for any Tailwind utility:
+
+```tsx
+// ❌ Won't work (ignored by the library engine)
+<Button className="bg-red-500">Click me</Button>
+
+// ✅ Correct usage
+<Button className="fluid:bg-red-500">Click me</Button>
+```
+
+### Variants Ordering
+When using variants like `hover`, `focus`, or `dark`, the `fluid:` prefix must always come **first**:
+
+- ✅ `fluid:hover:bg-blue-700`
+- ✅ `fluid:dark:bg-neutral-800`
+- ❌ `hover:fluid:bg-blue-700`
+
+### CSS Import
+To use the library styles, import the CSS file in your main entry point:
+
+```tsx
+import "@florentdeborde/fluid/style.css";
+```
 
 ## 🔧 Environment Configuration
 

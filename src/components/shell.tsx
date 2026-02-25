@@ -28,16 +28,17 @@ const ShellBackLink = React.forwardRef<HTMLAnchorElement, ShellBackLinkProps>(
                 ref={ref}
                 href={!asChild ? targetHref : undefined}
                 className={cn(
-                    "absolute top-6 left-6 inline-flex items-center gap-2 text-neutral-500 no-underline font-semibold transition-all hover:text-neutral-900 hover:-translate-x-1 cursor-pointer",
+                    "fluid:absolute fluid:top-6 fluid:left-6 fluid:inline-flex fluid:items-center fluid:gap-2 fluid:text-neutral-500 fluid:no-underline fluid:font-semibold fluid:transition-all fluid:hover:text-neutral-900 fluid:hover:-translate-x-1 fluid:cursor-pointer",
                     className
                 )}
+
                 {...props}
             >
                 {asChild ? (
                     children
                 ) : (
                     <>
-                        {icon || <ArrowLeft className="size-5" />}
+                        {icon || <ArrowLeft className="fluid:size-5" />}
                         {label || children || "Back"}
                     </>
                 )}
@@ -52,11 +53,11 @@ ShellBackLink.displayName = "ShellBackLink";
 /* -------------------------------------------------------------------------- */
 
 const containerSizes = {
-    sm: "max-w-3xl",
-    md: "max-w-5xl",
-    lg: "max-w-7xl",
-    xl: "max-w-screen-xl",
-    full: "max-w-full",
+    sm: "fluid:max-w-3xl",
+    md: "fluid:max-w-5xl",
+    lg: "fluid:max-w-7xl",
+    xl: "fluid:max-w-screen-xl",
+    full: "fluid:max-w-full",
 };
 
 export interface ShellProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -73,7 +74,7 @@ const Shell = React.forwardRef<HTMLDivElement, ShellProps>(
             <div
                 ref={ref}
                 className={cn(
-                    "container mx-auto px-6 py-12 relative flex flex-col gap-0",
+                    "fluid:container fluid:mx-auto fluid:px-6 fluid:py-12 fluid:relative fluid:flex fluid:flex-col fluid:gap-0",
                     containerSizes[containerSize],
                     className
                 )}
@@ -90,7 +91,7 @@ Shell.displayName = "Shell";
  * Header section for Title and Subtitle.
  */
 const ShellHeader = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <header className={cn("mb-8 mt-4 flex flex-col gap-2", className)} {...props} />
+    <header className={cn("fluid:mb-8 fluid:mt-4 fluid:flex fluid:flex-col fluid:gap-2", className)} {...props} />
 );
 ShellHeader.displayName = "ShellHeader";
 
@@ -98,7 +99,7 @@ ShellHeader.displayName = "ShellHeader";
  * Main Page Title (H1).
  */
 const ShellTitle = ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 className={cn("text-4xl font-bold tracking-tight text-neutral-900", className)} {...props} />
+    <h1 className={cn("fluid:text-4xl fluid:font-bold fluid:tracking-tight fluid:text-neutral-900", className)} {...props} />
 );
 ShellTitle.displayName = "ShellTitle";
 
@@ -106,7 +107,7 @@ ShellTitle.displayName = "ShellTitle";
  * Page Subtitle or description.
  */
 const ShellSubtitle = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-    <div className={cn("text-xl text-neutral-500", className)} {...props} />
+    <div className={cn("fluid:text-xl fluid:text-neutral-500", className)} {...props} />
 );
 ShellSubtitle.displayName = "ShellSubtitle";
 
@@ -114,8 +115,10 @@ ShellSubtitle.displayName = "ShellSubtitle";
  * Wrapper for the main page content.
  */
 const ShellContent = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <main className={cn("w-full", className)} {...props} />
+    <main className={cn("fluid:w-full", className)} {...props} />
 );
+
+
 ShellContent.displayName = "ShellContent";
 
 export {

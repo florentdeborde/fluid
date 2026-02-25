@@ -3,19 +3,20 @@ import { cn } from "../utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const loaderVariants = cva(
-    "flex flex-col items-center justify-center min-h-[200px] w-full gap-6",
+    "fluid:flex fluid:flex-col fluid:items-center fluid:justify-center fluid:min-h-[200px] fluid:w-full fluid:gap-6",
     {
         variants: {
             color: {
-                primary: "[--loader-color:theme(colors.blue.600)]",
-                destructive: "[--loader-color:theme(colors.red-600)]",
-                success: "[--loader-color:theme(colors.green.600)]",
-                neutral: "[--loader-color:theme(colors.neutral.600)]",
+                primary: "fluid:[--loader-color:theme(colors.blue.600)]",
+                destructive: "fluid:[--loader-color:theme(colors.red-600)]",
+                success: "fluid:[--loader-color:theme(colors.green.600)]",
+                neutral: "fluid:[--loader-color:theme(colors.neutral.600)]",
             },
+
             size: {
-                sm: "gap-4",
-                md: "gap-6",
-                lg: "gap-8",
+                sm: "fluid:gap-4",
+                md: "fluid:gap-6",
+                lg: "fluid:gap-8",
             },
         },
         defaultVariants: {
@@ -29,15 +30,15 @@ type LoaderSize = "sm" | "md" | "lg";
 type LoaderColor = "primary" | "destructive" | "success" | "neutral";
 
 const spinnerSizes: Record<LoaderSize, string> = {
-    sm: "size-8",
-    md: "size-[60px]",
-    lg: "size-20",
+    sm: "fluid:size-8",
+    md: "fluid:size-[60px]",
+    lg: "fluid:size-20",
 };
 
 const coreSizes: Record<LoaderSize, string> = {
-    sm: "size-4",
-    md: "size-[30px]",
-    lg: "size-10",
+    sm: "fluid:size-4",
+    md: "fluid:size-[30px]",
+    lg: "fluid:size-10",
 };
 
 const LoaderContext = React.createContext<{ size: LoaderSize; color: LoaderColor }>({
@@ -80,20 +81,20 @@ const LoaderSpinner = ({ className, ...props }: React.HTMLAttributes<HTMLDivElem
     const { size } = React.useContext(LoaderContext);
 
     return (
-        <div className={cn("relative flex items-center justify-center", spinnerSizes[size], className)} {...props}>
+        <div className={cn("fluid:relative fluid:flex fluid:items-center fluid:justify-center", spinnerSizes[size], className)} {...props}>
             {/* Spinner Ring */}
             <div
                 className={cn(
-                    "absolute inset-0 rounded-full border-3 border-transparent animate-spin-custom",
-                    "border-t-[var(--loader-color)] border-r-[var(--loader-color)]"
+                    "fluid:absolute fluid:inset-0 fluid:rounded-full fluid:border-3 fluid:border-transparent fluid:animate-spin-custom",
+                    "fluid:border-t-[var(--loader-color)] fluid:border-r-[var(--loader-color)]"
                 )}
             />
 
             {/* Spinner Core (Glowing effect) */}
             <div
                 className={cn(
-                    "rounded-full blur-[8px] opacity-50 animate-pulse-custom",
-                    "bg-[var(--loader-color)]",
+                    "fluid:rounded-full fluid:blur-[8px] fluid:opacity-50 fluid:animate-pulse-custom",
+                    "fluid:bg-[var(--loader-color)]",
                     coreSizes[size]
                 )}
             />
@@ -108,12 +109,14 @@ LoaderSpinner.displayName = "LoaderSpinner";
 const LoaderText = ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
         className={cn(
-            "font-sans text-[0.9rem] text-neutral-500 tracking-[0.05em] uppercase animate-in fade-in slide-in-from-bottom-2 duration-500",
+            "fluid:font-sans fluid:text-[0.9rem] fluid:text-neutral-500 fluid:tracking-[0.05em] fluid:uppercase fluid:animate-in fluid:fade-in fluid:slide-in-from-bottom-2 fluid:duration-500",
             className
         )}
         {...props}
     />
 );
+
+
 LoaderText.displayName = "LoaderText";
 
 export { Loader, LoaderSpinner, LoaderText };

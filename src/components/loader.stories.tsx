@@ -67,22 +67,22 @@ export const Custom: Story = {
         </Loader>
     ),
     args: {
-        className: '[--loader-color:#ff6b00]',
+        className: 'fluid:[--loader-color:#ff6b00] fluid:w-auto fluid:min-h-0',
     },
 };
 
 export const Sizes: Story = {
     render: (args) => (
-        <div className="flex items-end gap-12">
-            <Loader {...args} size="sm">
+        <div className="fluid:flex fluid:items-center fluid:justify-center fluid:gap-12">
+            <Loader {...args} size="sm" className="fluid:w-auto fluid:min-h-0">
                 <LoaderSpinner />
                 <LoaderText>Small</LoaderText>
             </Loader>
-            <Loader {...args} size="md">
+            <Loader {...args} size="md" className="fluid:w-auto fluid:min-h-0">
                 <LoaderSpinner />
                 <LoaderText>Medium</LoaderText>
             </Loader>
-            <Loader {...args} size="lg">
+            <Loader {...args} size="lg" className="fluid:w-auto fluid:min-h-0">
                 <LoaderSpinner />
                 <LoaderText>Large</LoaderText>
             </Loader>

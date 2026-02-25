@@ -57,6 +57,7 @@ describe('Shell', () => {
 
         // The first div should have the container class and the sm class
         const mainDiv = container.firstChild;
-        expect(mainDiv).toHaveClass('max-w-3xl');
+        expect(mainDiv).toHaveClass('fluid:max-w-3xl');
     });
+
 });

@@ -1,8 +1,5 @@
-@import "tailwindcss";
-
-@theme {
-    --color-primary: var(--blue-600);
-}
+@import "tailwindcss" prefix(fluid);
+@source "../src/**/*.{ts,tsx}";
 
 @keyframes pulse-custom {
 
@@ -28,10 +25,10 @@
     }
 }
 
-.animate-pulse-custom {
+@utility animate-pulse-custom {
     animation: pulse-custom 1.5s ease-in-out infinite;
 }
 
-.animate-spin-custom {
+@utility animate-spin-custom {
     animation: spin-custom 1s cubic-bezier(0.55, 0.2, 0.2, 0.8) infinite;
 }
