@@ -64,12 +64,13 @@ To start contributing or customizing the library locally:
 ## 🗺️ Roadmap & Future Evolutions
 
 - [ ] **Core Components**:
-  - [ ] Implement a polymorphic `Button` using Radix Slot.
+  - [x] Implement a polymorphic `Button` using Radix Slot.
+  - [x] Build responsive `Shell` (PageLayout) with advanced custom props.
   - [ ] Develop accessible `Input` components with validation states.
   - [ ] Build responsive `Grid` and `Stack` layout systems.
-- [ ] **Documentation**:
-  - [ ] Setup **Storybook 8** for interactive component documentation and testing.
-  - [ ] Integrate comprehensive JSDoc comments for all component properties.
+- [x] **Documentation**:
+  - [x] Setup **Storybook 10** for interactive component documentation and testing.
+  - [x] Integrate comprehensive JSDoc comments for all component properties.
 - [ ] **Quality Assurance**:
   - [ ] Reach 100% unit test coverage for core component logic.
   - [ ] Implement **Visual Regression Testing** to ensure UI consistency.
