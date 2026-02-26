@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { Input } from './input';
@@ -54,9 +55,9 @@ describe('Input', () => {
     });
 
     it('forwards ref correctly', () => {
-        let inputRef: HTMLInputElement | null = null;
-        render(<Input ref={(node) => (inputRef = node)} />);
-        expect(inputRef).not.toBeNull();
-        expect(inputRef?.tagName).toBe('INPUT');
+        const inputRef = React.createRef<HTMLInputElement>();
+        render(<Input ref={inputRef} />);
+        expect(inputRef.current).not.toBeNull();
+        expect(inputRef.current?.tagName).toBe('INPUT');
     });
 });

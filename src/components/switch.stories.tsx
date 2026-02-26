@@ -1,0 +1,54 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { Switch } from './switch';
+
+const meta: Meta<typeof Switch> = {
+    title: 'Components/Switch',
+    component: Switch,
+    parameters: {
+        layout: 'centered',
+    },
+    tags: ['autodocs'],
+    argTypes: {
+        color: {
+            control: 'select',
+            options: ['primary', 'destructive', 'success', 'neutral'],
+        },
+        size: {
+            control: 'select',
+            options: ['sm', 'md', 'lg'],
+        },
+        disabled: {
+            control: 'boolean',
+        },
+    },
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+    args: {},
+};
+
+export const Colors: Story = {
+    render: () => (
+        <div className="fluid:flex fluid:gap-6">
+            <Switch color="primary" defaultChecked />
+            <Switch color="success" defaultChecked />
+            <Switch color="destructive" defaultChecked />
+            <Switch color="neutral" defaultChecked />
+        </div>
+    )
+};
+
+export const Sizes: Story = {
+    render: () => (
+        <div className="fluid:flex fluid:items-center fluid:gap-6">
+            <Switch size="sm" defaultChecked />
+            <Switch size="md" defaultChecked />
+            <Switch size="lg" defaultChecked />
+        </div>
+    )
+};
+
+
