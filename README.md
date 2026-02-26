@@ -104,8 +104,8 @@ To start contributing or customizing the library locally:
 - [ ] **Quality Assurance**:
   - [ ] Reach 100% unit test coverage for core component logic.
   - [ ] Implement **Visual Regression Testing** to ensure UI consistency.
-- [ ] **Distribution & CI/CD**:
-  - [ ] Automate NPM publishing via GitHub Actions.
+- [x] **Distribution & CI/CD**:
+  - [x] Automate NPM publishing via GitHub Actions.
   - [ ] Support for native Dark/Light mode out of the box.
 
 ## 📜 License

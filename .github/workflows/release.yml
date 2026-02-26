@@ -1,0 +1,104 @@
+name: Publish to NPM
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: 'Version to release/tag (e.g., 0.3.0)'
+        required: true
+        type: string
+      next_main_version:
+        description: 'Next version for main branch (e.g., 0.4.0)'
+        required: true
+        type: string
+
+jobs:
+  release:
+    name: Build & Publish Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint & test before release
+        run: |
+          npm run lint
+          npm run test -- --run
+
+      - name: Create Release Branch & Tag
+        id: refs
+        run: |
+          VERSION="${{ github.event.inputs.release_version }}"
+          
+          # Strip 'v' if mistakenly provided (v0.3.0 -> 0.3.0)
+          CLEAN_VERSION="${VERSION#v}"
+          
+          # Extract the base '0.3' from '0.3.0' to name the branch 'release/0.3.x'
+          BRANCH_NAME="release/${CLEAN_VERSION%.*}.x"
+          
+          # Create the branch from the current commit and push it
+          git checkout -b $BRANCH_NAME
+          git push -u origin $BRANCH_NAME
+          
+          # Create ONLY the tag (without creating a new commit) and push it
+          git tag "$CLEAN_VERSION"
+          git push origin "$CLEAN_VERSION"
+          
+          # Export the names for the following steps
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          echo "tag_name=$CLEAN_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Bump Version on Main branch
+        run: |
+          # Checkout the original branch (usually main)
+          git checkout ${{ github.ref_name }}
+          
+          # Update package.json and package-lock.json WITHOUT generating an NPM tag or commit
+          npm version ${{ github.event.inputs.next_main_version }} --no-git-tag-version
+          
+          # Create a clean manual commit on main
+          git add package.json package-lock.json
+          git commit -m "chore: bump version to ${{ github.event.inputs.next_main_version }}"
+          git push origin ${{ github.ref_name }}
+          
+          # Switch back to the release branch for the build and publish steps
+          git checkout ${{ steps.refs.outputs.branch_name }}
+
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create ${{ steps.refs.outputs.tag_name }} \
+            --title "Release ${{ steps.refs.outputs.tag_name }}" \
+            --generate-notes \
+            --target ${{ steps.refs.outputs.branch_name }}
+
+      - name: Build Library
+        run: npm run build
+
+      - name: Publish to NPM
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
