@@ -10,28 +10,23 @@ const meta: Meta<typeof Button> = {
     },
     tags: ['autodocs'],
     argTypes: {
-        children: {
-            control: 'text',
-            table: { category: 'Base' },
-        },
         variant: {
             control: 'select',
             options: ['solid', 'outline', 'ghost', 'link'],
-            table: { category: 'Base' },
         },
         color: {
             control: 'select',
             options: ['primary', 'destructive', 'success', 'neutral'],
-            table: { category: 'Base' },
         },
         size: {
             control: 'select',
-            options: ['default', 'sm', 'lg', 'icon'],
-            table: { category: 'Base' },
+            options: ['md', 'sm', 'lg', 'icon'],
         },
         asChild: {
             control: 'boolean',
-            table: { category: 'Base' },
+        },
+        children: {
+            control: 'text',
         },
     },
 };
@@ -82,7 +77,7 @@ export const Sizes: Story = {
                 <Rocket className="fluid:size-4" />
             </Button>
             <Button size="sm">Small</Button>
-            <Button size="default">Default</Button>
+            <Button size="md">Default</Button>
             <Button size="lg">Large</Button>
         </div>
     ),

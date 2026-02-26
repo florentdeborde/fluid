@@ -96,8 +96,10 @@ To start contributing or customizing the library locally:
 - [ ] **Core Components**:
   - [x] Implement a polymorphic `Button` using Radix Slot.
   - [x] Build responsive `Shell` (PageLayout) with advanced custom props.
-  - [ ] Develop accessible `Input` components with validation states.
+  - [x] Develop accessible `Input` components with validation states.
   - [ ] Build responsive `Grid` and `Stack` layout systems.
+  - [ ] Create interactive input primitives: `Checkbox`, `Switch`, and `RadioGroup`.
+  - [ ] Add overlay and status indicators: `Tooltip` and `Badge`.
 - [x] **Documentation**:
   - [x] Setup **Storybook 10** for interactive component documentation and testing.
   - [x] Integrate comprehensive JSDoc comments for all component properties.

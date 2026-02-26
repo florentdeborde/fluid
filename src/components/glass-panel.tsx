@@ -30,10 +30,12 @@ const glassVariants = cva(
 
 
 export interface GlassPanelProps
-    extends React.HTMLAttributes<HTMLDivElement>,
+    extends Omit<React.HTMLAttributes<HTMLDivElement>, 'size'>,
     VariantProps<typeof glassVariants> {
+    /** The scale size of the panel's internal padding */
+    size?: "sm" | "md" | "lg";
     /** The content to be rendered inside the panel */
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 /**

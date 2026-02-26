@@ -12,7 +12,6 @@ const meta: Meta<typeof Shell> = {
         containerSize: {
             control: 'select',
             options: ['sm', 'md', 'lg', 'xl', 'full'],
-            table: { category: 'Base' },
         },
         children: {
             table: { disable: true },

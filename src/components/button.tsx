@@ -20,8 +20,8 @@ const buttonVariants = cva(
                 neutral: "",
             },
             size: {
-                default: "fluid:h-10 fluid:px-4 fluid:py-2",
                 sm: "fluid:h-9 fluid:rounded-md fluid:px-3",
+                md: "fluid:h-10 fluid:px-4 fluid:py-2",
                 lg: "fluid:h-11 fluid:rounded-md fluid:px-8 fluid:text-base",
                 icon: "fluid:h-10 fluid:w-10",
             },
@@ -54,7 +54,7 @@ const buttonVariants = cva(
         defaultVariants: {
             variant: "solid",
             color: "primary",
-            size: "default",
+            size: "md",
         },
     }
 );
@@ -65,6 +65,13 @@ const buttonVariants = cva(
 export interface ButtonProps
     extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
     VariantProps<typeof buttonVariants> {
+    /** The style variant of the button */
+    variant?: "solid" | "outline" | "ghost" | "link";
+    /** The semantic color of the button */
+    color?: "primary" | "destructive" | "success" | "neutral";
+    /** The scale size of the button */
+    size?: "sm" | "md" | "lg" | "icon";
+    /** If true, renders as its children without a wrapping button element */
     asChild?: boolean;
 }
 

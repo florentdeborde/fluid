@@ -9,12 +9,10 @@ const meta: Meta<typeof Loader> = {
         size: {
             control: 'select',
             options: ['sm', 'md', 'lg'],
-            table: { category: 'Base' }
         },
         color: {
             control: 'select',
             options: ['primary', 'destructive', 'success', 'neutral'],
-            table: { category: 'Base' }
         },
     },
 };

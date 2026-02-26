@@ -48,7 +48,12 @@ const LoaderContext = React.createContext<{ size: LoaderSize; color: LoaderColor
 
 export interface LoaderProps
     extends Omit<React.HTMLAttributes<HTMLDivElement>, "color" | "size">,
-    VariantProps<typeof loaderVariants> { }
+    VariantProps<typeof loaderVariants> {
+    /** The semantic color of the loader */
+    color?: "primary" | "destructive" | "success" | "neutral";
+    /** The scale size of the loader */
+    size?: "sm" | "md" | "lg";
+}
 
 /**
  * Main wrapper for the Loader system.

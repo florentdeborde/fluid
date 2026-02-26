@@ -9,7 +9,6 @@ const meta: Meta<typeof GlassPanel> = {
         size: {
             control: 'select',
             options: ['sm', 'md', 'lg'],
-            table: { category: 'Dimensions' }
         },
         children: { table: { disable: true } },
     },
