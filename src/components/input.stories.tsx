@@ -13,13 +13,13 @@ const meta = {
             control: 'select',
             options: ['text', 'password', 'email', 'tel', 'number', 'file'],
         },
+        size: {
+            control: 'select',
+            options: ['sm', 'md', 'lg'],
+        },
         disabled: { control: 'boolean' },
         error: { control: 'boolean' },
         placeholder: { control: 'text' },
-        size: {
-            control: 'select',
-            options: ['md', 'sm', 'lg'],
-        },
     },
 } satisfies Meta<typeof Input>;
 

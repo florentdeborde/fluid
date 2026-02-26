@@ -10,17 +10,17 @@ const meta: Meta<typeof Button> = {
     },
     tags: ['autodocs'],
     argTypes: {
-        variant: {
-            control: 'select',
-            options: ['solid', 'outline', 'ghost', 'link'],
-        },
         color: {
             control: 'select',
             options: ['primary', 'destructive', 'success', 'neutral'],
         },
         size: {
             control: 'select',
-            options: ['md', 'sm', 'lg', 'icon'],
+            options: ['sm', 'md', 'lg', 'icon'],
+        },
+        variant: {
+            control: 'select',
+            options: ['solid', 'outline', 'ghost', 'link'],
         },
         asChild: {
             control: 'boolean',

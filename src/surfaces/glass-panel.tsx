@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cn } from "../utils/cn";
+import type { ComponentSize } from "../types/shared";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const glassVariants = cva(
@@ -33,7 +34,7 @@ export interface GlassPanelProps
     extends Omit<React.HTMLAttributes<HTMLDivElement>, 'size'>,
     VariantProps<typeof glassVariants> {
     /** The scale size of the panel's internal padding */
-    size?: "sm" | "md" | "lg";
+    size?: ComponentSize;
     /** The content to be rendered inside the panel */
     children?: React.ReactNode;
 }

@@ -6,13 +6,13 @@ const meta: Meta<typeof Loader> = {
     component: Loader,
     tags: ['autodocs'],
     argTypes: {
-        size: {
-            control: 'select',
-            options: ['sm', 'md', 'lg'],
-        },
         color: {
             control: 'select',
             options: ['primary', 'destructive', 'success', 'neutral'],
+        },
+        size: {
+            control: 'select',
+            options: ['sm', 'md', 'lg'],
         },
     },
 };

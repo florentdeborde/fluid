@@ -2,6 +2,7 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../utils/cn";
+import type { ComponentSize, ComponentColor } from "../types/shared";
 
 const buttonVariants = cva(
     "fluid:inline-flex fluid:items-center fluid:justify-center fluid:gap-2 fluid:whitespace-nowrap fluid:rounded-md fluid:text-sm fluid:font-medium fluid:transition-all fluid:focus-visible:outline-none fluid:focus-visible:ring-2 fluid:focus-visible:ring-blue-500 fluid:disabled:pointer-events-none fluid:disabled:opacity-50 fluid:active:scale-95 fluid:cursor-pointer [&_svg]:pointer-events-none [&_svg]:fluid:size-4 [&_svg]:fluid:shrink-0",
@@ -65,12 +66,12 @@ const buttonVariants = cva(
 export interface ButtonProps
     extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
     VariantProps<typeof buttonVariants> {
+    /** The semantic color of the button */
+    color?: ComponentColor;
+    /** The scale size of the button */
+    size?: ComponentSize | "icon";
     /** The style variant of the button */
     variant?: "solid" | "outline" | "ghost" | "link";
-    /** The semantic color of the button */
-    color?: "primary" | "destructive" | "success" | "neutral";
-    /** The scale size of the button */
-    size?: "sm" | "md" | "lg" | "icon";
     /** If true, renders as its children without a wrapping button element */
     asChild?: boolean;
 }

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { cn } from "../utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
+import type { ComponentSize, ComponentColor } from "../types/shared";
 
 const loaderVariants = cva(
     "fluid:flex fluid:flex-col fluid:items-center fluid:justify-center fluid:min-h-[200px] fluid:w-full fluid:gap-6",
@@ -26,22 +27,21 @@ const loaderVariants = cva(
     }
 );
 
-type LoaderSize = "sm" | "md" | "lg";
-type LoaderColor = "primary" | "destructive" | "success" | "neutral";
+// Removed local types as we use imported ComponentSize and ComponentColor
 
-const spinnerSizes: Record<LoaderSize, string> = {
+const spinnerSizes: Record<ComponentSize, string> = {
     sm: "fluid:size-8",
     md: "fluid:size-[60px]",
     lg: "fluid:size-20",
 };
 
-const coreSizes: Record<LoaderSize, string> = {
+const coreSizes: Record<ComponentSize, string> = {
     sm: "fluid:size-4",
     md: "fluid:size-[30px]",
     lg: "fluid:size-10",
 };
 
-const LoaderContext = React.createContext<{ size: LoaderSize; color: LoaderColor }>({
+const LoaderContext = React.createContext<{ size: ComponentSize; color: ComponentColor }>({
     size: "md",
     color: "primary",
 });
@@ -50,9 +50,9 @@ export interface LoaderProps
     extends Omit<React.HTMLAttributes<HTMLDivElement>, "color" | "size">,
     VariantProps<typeof loaderVariants> {
     /** The semantic color of the loader */
-    color?: "primary" | "destructive" | "success" | "neutral";
+    color?: ComponentColor;
     /** The scale size of the loader */
-    size?: "sm" | "md" | "lg";
+    size?: ComponentSize;
 }
 
 /**
@@ -60,8 +60,8 @@ export interface LoaderProps
  */
 const Loader = React.forwardRef<HTMLDivElement, LoaderProps>(
     ({ className, size = "md", color = "primary", children, ...props }, ref) => {
-        const currentSize = (size || "md") as LoaderSize;
-        const currentColor = (color || "primary") as LoaderColor;
+        const currentSize = (size || "md") as ComponentSize;
+        const currentColor = (color || "primary") as ComponentColor;
 
         return (
             <LoaderContext.Provider value={{ size: currentSize, color: currentColor }}>

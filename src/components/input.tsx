@@ -2,6 +2,7 @@ import * as React from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../utils/cn";
+import type { ComponentSize } from "../types/shared";
 
 const inputVariants = cva(
     "fluid:flex fluid:w-full fluid:rounded-md fluid:border fluid:border-neutral-200 fluid:bg-white fluid:transition-colors fluid:file:border-0 fluid:file:bg-transparent fluid:file:text-sm fluid:file:font-medium fluid:placeholder:text-neutral-500 fluid:focus-visible:outline-none fluid:focus-visible:ring-2 fluid:disabled:cursor-not-allowed fluid:disabled:opacity-50",
@@ -32,6 +33,10 @@ export interface InputProps
      * Defines the type of the input field.
      */
     type?: React.HTMLInputTypeAttribute;
+    /**
+     * The scale size of the input field.
+     */
+    size?: ComponentSize;
     /** 
      * If true, applies the error styling and sets aria-invalid="true" 
      * for accessibility purposes.
