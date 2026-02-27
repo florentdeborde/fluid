@@ -37,8 +37,9 @@ export const WithValue: Story = {
 };
 
 export const Password: Story = {
+    render: (args) => <Input.Password {...args} />,
     args: {
-        type: 'password',
+        placeholder: 'Enter password',
     },
 };
 
@@ -81,11 +82,7 @@ export const Disabled: Story = {
     },
 };
 
-export const FileUpload: Story = {
-    args: {
-        type: 'file',
-    },
-};
+
 
 export const Sizes: Story = {
     render: () => (

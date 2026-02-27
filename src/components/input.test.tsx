@@ -60,4 +60,15 @@ describe('Input', () => {
         expect(inputRef.current).not.toBeNull();
         expect(inputRef.current?.tagName).toBe('INPUT');
     });
+
+    it('renders a password input with toggle when using Input.Password', () => {
+        render(<Input.Password data-testid="password-input" placeholder="Password" />);
+        const input = screen.getByTestId('password-input');
+        expect(input).toHaveAttribute('type', 'password');
+
+        // Find the toggle button
+        const button = screen.getByRole('button', { name: /show password/i });
+        expect(button).toBeInTheDocument();
+    });
 });
+

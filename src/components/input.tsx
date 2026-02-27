@@ -5,7 +5,7 @@ import { cn } from "../utils/cn";
 import type { ComponentSize } from "../types/shared";
 
 const inputVariants = cva(
-    "fluid:flex fluid:w-full fluid:rounded-md fluid:border fluid:border-neutral-200 fluid:bg-white fluid:dark:border-neutral-700 fluid:dark:bg-neutral-950 fluid:dark:text-neutral-100 fluid:transition-colors fluid:file:border-0 fluid:file:bg-transparent fluid:file:text-sm fluid:file:font-medium fluid:placeholder:text-neutral-500 fluid:dark:placeholder:text-neutral-400 fluid:focus-visible:outline-none fluid:focus-visible:ring-2 fluid:disabled:cursor-not-allowed fluid:disabled:opacity-50",
+    "fluid:flex fluid:w-full fluid:rounded-md fluid:border fluid:border-neutral-200 fluid:bg-white fluid:dark:border-neutral-700 fluid:dark:bg-neutral-900 fluid:dark:text-neutral-100 fluid:transition-colors fluid:file:border-0 fluid:file:bg-transparent fluid:file:text-sm fluid:file:font-medium fluid:placeholder:text-neutral-500 fluid:dark:placeholder:text-neutral-400 fluid:focus-visible:outline-none fluid:focus-visible:ring-2 fluid:disabled:cursor-not-allowed fluid:disabled:opacity-50",
     {
         variants: {
             variant: {
@@ -58,64 +58,71 @@ const defaultPlaceholders: Record<string, string> = {
     number: "Enter number",
 };
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-    ({ className, type, variant, size, error, success, onChange, ...props }, ref) => {
-        const [showPassword, setShowPassword] = React.useState(false);
-        const [hasFile, setHasFile] = React.useState(false);
+const InputComponent = React.forwardRef<HTMLInputElement, InputProps>(
+    ({ className, type, variant, size, error, success, ...props }, ref) => {
         const inputVariant = error ? "error" : success ? "success" : variant;
-        const isPassword = type === "password";
-        const isFileInput = type === "file";
         const expectedType = type || "text";
         const resolvedPlaceholder = props.placeholder || defaultPlaceholders[expectedType] || undefined;
 
-        const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-            if (isFileInput) {
-                setHasFile(!!e.target.files && e.target.files.length > 0);
-            }
-            if (onChange) {
-                onChange(e);
-            }
-        };
-
-        const inputElement = (
+        return (
             <input
-                type={isPassword ? (showPassword ? "text" : "password") : type}
+                type={type}
                 placeholder={resolvedPlaceholder}
                 className={cn(
-                    inputVariants({ variant: inputVariant, size, className }),
-                    isPassword && "fluid:pr-10", // space for the icon
-                    isFileInput && !hasFile && "fluid:text-neutral-500" // fade out text when no file is chosen
+                    inputVariants({ variant: inputVariant, size, className })
                 )}
                 ref={ref}
                 aria-invalid={error ? "true" : undefined}
-                onChange={handleChange}
                 {...props}
             />
         );
-
-        if (isPassword) {
-            return (
-                <div className="fluid:relative fluid:w-full">
-                    {inputElement}
-                    <button
-                        type="button"
-                        className="fluid:absolute fluid:right-3 fluid:top-1/2 fluid:-translate-y-1/2 fluid:text-neutral-500 fluid:hover:text-neutral-700 fluid:dark:hover:text-neutral-300 fluid:focus-visible:outline-none fluid:focus-visible:text-blue-500 fluid:transition-colors fluid:cursor-pointer"
-                        onClick={() => setShowPassword(!showPassword)}
-                        aria-label={showPassword ? "Hide password" : "Show password"}
-                    >
-                        {showPassword ? (
-                            <EyeOff className="fluid:size-4.5" />
-                        ) : (
-                            <Eye className="fluid:size-4.5" />
-                        )}
-                    </button>
-                </div>
-            );
-        }
-
-        return inputElement;
     }
 );
-Input.displayName = "Input";
+InputComponent.displayName = "Input";
 
-export { Input, inputVariants };
+/* -------------------------------------------------------------------------- */
+/*                                Input Password                              */
+/* -------------------------------------------------------------------------- */
+
+export interface InputPasswordProps extends InputProps { }
+
+/**
+ * A specialized Input for passwords with a visibility toggle.
+ */
+const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps>(
+    ({ className, variant, ...props }, ref) => {
+        const [showPassword, setShowPassword] = React.useState(false);
+        const inputVariant = variant || "password";
+
+        return (
+            <div className="fluid:relative fluid:w-full">
+                <InputComponent
+                    type={showPassword ? "text" : "password"}
+                    variant={inputVariant as any}
+                    className={cn("fluid:pr-10", className)}
+                    ref={ref}
+                    {...props}
+                />
+                <button
+                    type="button"
+                    className="fluid:absolute fluid:right-3 fluid:top-1/2 fluid:-translate-y-1/2 fluid:text-neutral-500 fluid:hover:text-neutral-700 fluid:dark:hover:text-neutral-300 fluid:focus-visible:outline-none fluid:focus-visible:text-blue-500 fluid:transition-colors fluid:cursor-pointer"
+                    onClick={() => setShowPassword(!showPassword)}
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                    {showPassword ? (
+                        <EyeOff className="fluid:size-4.5" />
+                    ) : (
+                        <Eye className="fluid:size-4.5" />
+                    )}
+                </button>
+            </div>
+        );
+    }
+);
+InputPassword.displayName = "Input.Password";
+
+export const Input = Object.assign(InputComponent, {
+    Password: InputPassword,
+});
+
+export { inputVariants };
