@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import { Slot } from "@radix-ui/react-slot";
 import { cn } from "../utils/cn";
 
 const textVariants = cva(
@@ -36,12 +37,13 @@ const textVariants = cva(
 export interface TextProps
     extends React.HTMLAttributes<HTMLParagraphElement>,
     VariantProps<typeof textVariants> {
-    /** The HTML element to render the text as */
-    as?: "p" | "span" | "div";
+    /** If true, the component will render as the child provided (polymorphic) */
+    asChild?: boolean;
 }
 
 const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
-    ({ className, size, variant, weight, as: Comp = "p", ...props }, ref) => {
+    ({ className, size, variant, weight, asChild = false, ...props }, ref) => {
+        const Comp = asChild ? Slot : "p";
         return (
             <Comp
                 ref={ref as any}

@@ -100,16 +100,16 @@ ShellHeader.displayName = "ShellHeader";
 /**
  * Main Page Title (H1).
  */
-const ShellTitle = ({ className, level = 1, ...props }: HeadingProps) => (
-    <Heading level={level} className={className} {...props} />
+const ShellTitle = ({ className, level = 1, asChild = false, ...props }: HeadingProps) => (
+    <Heading level={level} asChild={asChild} className={className} {...props} />
 );
 ShellTitle.displayName = "ShellTitle";
 
 /**
  * Page Subtitle or description.
  */
-const ShellSubtitle = ({ className, size = "xl", variant = "muted", as = "div", ...props }: TextProps) => (
-    <Text as={as} size={size} variant={variant} className={className} {...props} />
+const ShellSubtitle = ({ className, size = "xl", variant = "muted", asChild = false, ...props }: TextProps) => (
+    <Text asChild={asChild} size={size} variant={variant} className={className} {...props} />
 );
 ShellSubtitle.displayName = "ShellSubtitle";
 

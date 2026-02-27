@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import { Slot } from "@radix-ui/react-slot";
 import { cn } from "../utils/cn";
 
 const headingVariants = cva(
@@ -28,13 +29,15 @@ export interface HeadingProps
     level?: 1 | 2 | 3 | 4 | 5 | 6;
     /** The visual size of the heading. Defaults to match the level. */
     size?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    /** If true, the component will render as the child provided (polymorphic) */
+    asChild?: boolean;
 }
 
 const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
-    ({ className, level = 2, size, ...props }, ref) => {
-        const Comp = `h${level}` as "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    ({ className, level = 2, size, asChild = false, ...props }, ref) => {
+        const Comp = asChild ? Slot : (`h${level}` as "h1" | "h2" | "h3" | "h4" | "h5" | "h6");
         const computedSize = size || `h${level}`;
-        
+
         return (
             <Comp
                 ref={ref}

@@ -17,9 +17,14 @@ describe('Heading', () => {
 
         rerender(<Heading level={3} data-testid="heading">H3</Heading>);
         expect(screen.getByTestId('heading').tagName).toBe('H3');
-        
+
         rerender(<Heading level={6} data-testid="heading">H6</Heading>);
         expect(screen.getByTestId('heading').tagName).toBe('H6');
+    });
+
+    it('renders polymorphically using asChild', () => {
+        render(<Heading asChild data-testid="heading"><span>Span</span></Heading>);
+        expect(screen.getByTestId('heading').tagName).toBe('SPAN');
     });
 
     it('applies explicit size variant classes independent of level', () => {

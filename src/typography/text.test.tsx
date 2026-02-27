@@ -11,11 +11,11 @@ describe('Text', () => {
         expect(text).toHaveTextContent('Hello World');
     });
 
-    it('renders correct elements based on as prop', () => {
-        const { rerender } = render(<Text as="span" data-testid="text">Span</Text>);
+    it('renders polymorphically using asChild', () => {
+        const { rerender } = render(<Text asChild data-testid="text"><span>Span</span></Text>);
         expect(screen.getByTestId('text').tagName).toBe('SPAN');
 
-        rerender(<Text as="div" data-testid="text">Div</Text>);
+        rerender(<Text asChild data-testid="text"><div>Div</div></Text>);
         expect(screen.getByTestId('text').tagName).toBe('DIV');
     });
 
