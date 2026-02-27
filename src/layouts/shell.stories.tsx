@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Shell, ShellHeader, ShellTitle, ShellSubtitle, ShellContent, ShellBackLink } from './shell';
+import { Shell } from './shell';
 
 const meta: Meta<typeof Shell> = {
     title: 'Layout/Shell',
@@ -36,14 +36,14 @@ const PlaceholderContent = (
 export const Default: Story = {
     render: (args) => (
         <Shell {...args}>
-            <ShellBackLink href="#" />
-            <ShellHeader>
-                <ShellTitle>Composable Shell</ShellTitle>
-                <ShellSubtitle>An overview of the development process.</ShellSubtitle>
-            </ShellHeader>
-            <ShellContent>
+            <Shell.BackLink href="#" />
+            <Shell.Header>
+                <Shell.Title>Composable Shell</Shell.Title>
+                <Shell.Subtitle>An overview of the development process.</Shell.Subtitle>
+            </Shell.Header>
+            <Shell.Content>
                 {PlaceholderContent}
-            </ShellContent>
+            </Shell.Content>
         </Shell>
     ),
     args: {
@@ -54,15 +54,15 @@ export const Default: Story = {
 export const Minimal: Story = {
     render: (args) => (
         <Shell {...args}>
-            <ShellHeader>
-                <ShellTitle>Simple Layout</ShellTitle>
-            </ShellHeader>
-            <ShellContent>
+            <Shell.Header>
+                <Shell.Title>Simple Layout</Shell.Title>
+            </Shell.Header>
+            <Shell.Content>
                 {PlaceholderContent}
-            </ShellContent>
+            </Shell.Content>
         </Shell>
     ),
     args: {
-        width: 'sm',
+        width: 'md',
     },
 };

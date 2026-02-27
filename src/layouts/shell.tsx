@@ -68,28 +68,6 @@ export interface ShellProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * Main wrapper for page layouts.
- */
-const Shell = React.forwardRef<HTMLDivElement, ShellProps>(
-    ({ width = "md", children, className, ...props }, ref) => {
-        return (
-            <div
-                ref={ref}
-                className={cn(
-                    "fluid:container fluid:mx-auto fluid:px-6 fluid:py-12 fluid:relative fluid:flex fluid:flex-col fluid:gap-0",
-                    widths[width],
-                    className
-                )}
-                {...props}
-            >
-                {children}
-            </div>
-        );
-    }
-);
-Shell.displayName = "Shell";
-
-/**
  * Header section for Title and Subtitle.
  */
 const ShellHeader = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
@@ -119,15 +97,34 @@ ShellSubtitle.displayName = "ShellSubtitle";
 const ShellContent = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <main className={cn("fluid:w-full", className)} {...props} />
 );
-
-
 ShellContent.displayName = "ShellContent";
 
-export {
-    Shell,
-    ShellHeader,
-    ShellTitle,
-    ShellSubtitle,
-    ShellContent,
-    ShellBackLink
-};
+/**
+ * Main wrapper for page layouts.
+ */
+const ShellComponent = React.forwardRef<HTMLDivElement, ShellProps>(
+    ({ width = "md", children, className, ...props }, ref) => {
+        return (
+            <div
+                ref={ref}
+                className={cn(
+                    "fluid:container fluid:mx-auto fluid:px-6 fluid:py-12 fluid:relative fluid:flex fluid:flex-col fluid:gap-0",
+                    widths[width],
+                    className
+                )}
+                {...props}
+            >
+                {children}
+            </div>
+        );
+    }
+);
+ShellComponent.displayName = "Shell";
+
+export const Shell = Object.assign(ShellComponent, {
+    Header: ShellHeader,
+    Title: ShellTitle,
+    Subtitle: ShellSubtitle,
+    Content: ShellContent,
+    BackLink: ShellBackLink,
+});

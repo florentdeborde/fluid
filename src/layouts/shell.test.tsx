@@ -1,19 +1,19 @@
 import '@testing-library/jest-dom/vitest';
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { Shell, ShellHeader, ShellTitle, ShellSubtitle, ShellContent, ShellBackLink } from './shell';
+import { Shell } from './shell';
 
 describe('Shell', () => {
     it('renders title and subtitle using composable parts', () => {
         render(
             <Shell>
-                <ShellHeader>
-                    <ShellTitle>Hello World</ShellTitle>
-                    <ShellSubtitle>Welcome to Fluid</ShellSubtitle>
-                </ShellHeader>
-                <ShellContent>
+                <Shell.Header>
+                    <Shell.Title>Hello World</Shell.Title>
+                    <Shell.Subtitle>Welcome to Fluid</Shell.Subtitle>
+                </Shell.Header>
+                <Shell.Content>
                     <div>Content</div>
-                </ShellContent>
+                </Shell.Content>
             </Shell>
         );
 
@@ -25,8 +25,8 @@ describe('Shell', () => {
     it('renders the back link', () => {
         render(
             <Shell>
-                <ShellBackLink href="/home" label="Go Home" />
-                <ShellContent>Content</ShellContent>
+                <Shell.BackLink href="/home" label="Go Home" />
+                <Shell.Content>Content</Shell.Content>
             </Shell>
         );
 
@@ -38,9 +38,9 @@ describe('Shell', () => {
     it('renders children correctly', () => {
         render(
             <Shell>
-                <ShellContent>
+                <Shell.Content>
                     <div data-testid="child">Deep Content</div>
-                </ShellContent>
+                </Shell.Content>
             </Shell>
         );
 
@@ -51,7 +51,7 @@ describe('Shell', () => {
     it('applies the correct max-width class based on width prop', () => {
         const { container } = render(
             <Shell width="sm">
-                <ShellContent>Content</ShellContent>
+                <Shell.Content>Content</Shell.Content>
             </Shell>
         );
 
