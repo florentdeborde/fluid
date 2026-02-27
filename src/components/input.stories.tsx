@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Input } from './input';
+import { COMPONENT_SIZES } from '../types/shared';
 
 const meta = {
     title: 'Components/Input',
@@ -15,7 +16,7 @@ const meta = {
         },
         size: {
             control: 'select',
-            options: ['sm', 'md', 'lg'],
+            options: COMPONENT_SIZES,
         },
         disabled: { control: 'boolean' },
         error: { control: 'boolean' },

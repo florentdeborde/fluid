@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { GlassPanel } from './glass-panel';
 import { Heading } from '../typography/heading';
 import { Text } from '../typography/text';
+import { PADDING_SIZES, WIDTH_SIZES } from '../types/shared';
 
 const meta: Meta<typeof GlassPanel> = {
     title: 'Surfaces/GlassPanel',
@@ -10,12 +11,12 @@ const meta: Meta<typeof GlassPanel> = {
     argTypes: {
         padding: {
             control: 'select',
-            options: ['sm', 'md', 'lg'],
+            options: PADDING_SIZES,
             description: 'Controls the internal padding',
         },
         width: {
             control: 'select',
-            options: ['sm', 'md', 'lg', 'full', 'auto'],
+            options: WIDTH_SIZES,
             description: 'Controls the maximum width of the panel',
         },
         children: { table: { disable: true } },

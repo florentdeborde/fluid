@@ -1,6 +1,6 @@
 import * as React from "react";
 import { cn } from "../utils/cn";
-import type { ComponentSize } from "../types/shared";
+import type { PaddingSize, WidthSize } from "../types/shared";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const glassVariants = cva(
@@ -19,11 +19,13 @@ const glassVariants = cva(
                 sm: "fluid:p-4",
                 md: "fluid:p-8",
                 lg: "fluid:p-12",
+                xl: "fluid:p-16",
             },
             width: {
                 sm: "fluid:w-full fluid:max-w-sm",
                 md: "fluid:w-full fluid:max-w-md",
                 lg: "fluid:w-full fluid:max-w-lg",
+                xl: "fluid:w-full fluid:max-w-2xl",
                 full: "fluid:w-full",
                 auto: "fluid:w-auto",
             }
@@ -41,9 +43,9 @@ export interface GlassPanelProps
     extends Omit<React.HTMLAttributes<HTMLDivElement>, 'padding'>,
     VariantProps<typeof glassVariants> {
     /** The scale size of the panel's internal padding */
-    padding?: ComponentSize;
+    padding?: PaddingSize;
     /** The predefined width constraints of the panel */
-    width?: "sm" | "md" | "lg" | "full" | "auto";
+    width?: WidthSize;
     /** The content to be rendered inside the panel */
     children?: React.ReactNode;
 }

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Shell } from './shell';
+import { WIDTH_SIZES } from '../types/shared';
 
 const meta: Meta<typeof Shell> = {
     title: 'Layout/Shell',
@@ -11,7 +12,7 @@ const meta: Meta<typeof Shell> = {
     argTypes: {
         width: {
             control: 'select',
-            options: ['sm', 'md', 'lg', 'xl', 'full'],
+            options: WIDTH_SIZES,
         },
         children: {
             table: { disable: true },

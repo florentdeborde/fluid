@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Switch } from './switch';
+import { COMPONENT_SIZES } from '../types/shared';
 
 const meta: Meta<typeof Switch> = {
     title: 'Components/Switch',
@@ -15,7 +16,7 @@ const meta: Meta<typeof Switch> = {
         },
         size: {
             control: 'select',
-            options: ['sm', 'md', 'lg'],
+            options: COMPONENT_SIZES,
         },
         disabled: {
             control: 'boolean',

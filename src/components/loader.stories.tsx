@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Loader, LoaderSpinner, LoaderText } from './loader';
+import { COMPONENT_SIZES, COMPONENT_COLORS } from '../types/shared';
 
 const meta: Meta<typeof Loader> = {
     title: 'Components/Loader',
@@ -8,11 +9,11 @@ const meta: Meta<typeof Loader> = {
     argTypes: {
         color: {
             control: 'select',
-            options: ['primary', 'destructive', 'success', 'neutral'],
+            options: COMPONENT_COLORS,
         },
         size: {
             control: 'select',
-            options: ['sm', 'md', 'lg'],
+            options: COMPONENT_SIZES,
         },
     },
 };

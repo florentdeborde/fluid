@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { cn } from "../utils/cn";
 import { Heading, type HeadingProps } from "../typography/heading";
 import { Text, type TextProps } from "../typography/text";
+import type { WidthSize } from "../types/shared";
 
 /* -------------------------------------------------------------------------- */
 /*                                Shell BackLink                              */
@@ -54,17 +55,18 @@ ShellBackLink.displayName = "ShellBackLink";
 /*                                    Shell                                   */
 /* -------------------------------------------------------------------------- */
 
-const widths = {
+const widths: Record<WidthSize, string> = {
     sm: "fluid:max-w-3xl",
     md: "fluid:max-w-5xl",
     lg: "fluid:max-w-7xl",
     xl: "fluid:max-w-screen-xl",
     full: "fluid:max-w-full",
+    auto: "fluid:max-w-auto",
 };
 
 export interface ShellProps extends React.HTMLAttributes<HTMLDivElement> {
     /** Max width of the content container */
-    width?: keyof typeof widths;
+    width?: WidthSize;
 }
 
 /**

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './button';
 import { Rocket, Trash2 } from 'lucide-react';
+import { COMPONENT_SIZES, COMPONENT_COLORS } from '../types/shared';
 
 const meta: Meta<typeof Button> = {
     title: 'Components/Button',
@@ -12,11 +13,11 @@ const meta: Meta<typeof Button> = {
     argTypes: {
         color: {
             control: 'select',
-            options: ['primary', 'destructive', 'success', 'neutral'],
+            options: COMPONENT_COLORS,
         },
         size: {
             control: 'select',
-            options: ['sm', 'md', 'lg', 'icon'],
+            options: [...COMPONENT_SIZES, 'icon'],
         },
         variant: {
             control: 'select',
