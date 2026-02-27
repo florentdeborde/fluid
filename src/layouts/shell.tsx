@@ -2,6 +2,8 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "../utils/cn";
+import { Heading, type HeadingProps } from "../typography/heading";
+import { Text, type TextProps } from "../typography/text";
 
 /* -------------------------------------------------------------------------- */
 /*                                Shell BackLink                              */
@@ -28,7 +30,7 @@ const ShellBackLink = React.forwardRef<HTMLAnchorElement, ShellBackLinkProps>(
                 ref={ref}
                 href={!asChild ? targetHref : undefined}
                 className={cn(
-                    "fluid:absolute fluid:top-6 fluid:left-6 fluid:inline-flex fluid:items-center fluid:gap-2 fluid:text-neutral-500 fluid:no-underline fluid:font-semibold fluid:transition-all fluid:hover:text-neutral-900 fluid:hover:-translate-x-1 fluid:cursor-pointer",
+                    "fluid:absolute fluid:top-6 fluid:left-6 fluid:inline-flex fluid:items-center fluid:gap-2 fluid:text-neutral-500 fluid:no-underline fluid:font-semibold fluid:transition-all fluid:hover:text-neutral-900 fluid:dark:hover:text-neutral-100 fluid:hover:-translate-x-1 fluid:cursor-pointer",
                     className
                 )}
 
@@ -52,7 +54,7 @@ ShellBackLink.displayName = "ShellBackLink";
 /*                                    Shell                                   */
 /* -------------------------------------------------------------------------- */
 
-const containerSizes = {
+const widths = {
     sm: "fluid:max-w-3xl",
     md: "fluid:max-w-5xl",
     lg: "fluid:max-w-7xl",
@@ -62,20 +64,20 @@ const containerSizes = {
 
 export interface ShellProps extends React.HTMLAttributes<HTMLDivElement> {
     /** Max width of the content container */
-    containerSize?: keyof typeof containerSizes;
+    width?: keyof typeof widths;
 }
 
 /**
  * Main wrapper for page layouts.
  */
 const Shell = React.forwardRef<HTMLDivElement, ShellProps>(
-    ({ containerSize = "md", children, className, ...props }, ref) => {
+    ({ width = "md", children, className, ...props }, ref) => {
         return (
             <div
                 ref={ref}
                 className={cn(
                     "fluid:container fluid:mx-auto fluid:px-6 fluid:py-12 fluid:relative fluid:flex fluid:flex-col fluid:gap-0",
-                    containerSizes[containerSize],
+                    widths[width],
                     className
                 )}
                 {...props}
@@ -98,16 +100,16 @@ ShellHeader.displayName = "ShellHeader";
 /**
  * Main Page Title (H1).
  */
-const ShellTitle = ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 className={cn("fluid:text-4xl fluid:font-bold fluid:tracking-tight fluid:text-neutral-900", className)} {...props} />
+const ShellTitle = ({ className, level = 1, ...props }: HeadingProps) => (
+    <Heading level={level} className={className} {...props} />
 );
 ShellTitle.displayName = "ShellTitle";
 
 /**
  * Page Subtitle or description.
  */
-const ShellSubtitle = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-    <div className={cn("fluid:text-xl fluid:text-neutral-500", className)} {...props} />
+const ShellSubtitle = ({ className, size = "xl", variant = "muted", as = "div", ...props }: TextProps) => (
+    <Text as={as} size={size} variant={variant} className={className} {...props} />
 );
 ShellSubtitle.displayName = "ShellSubtitle";
 

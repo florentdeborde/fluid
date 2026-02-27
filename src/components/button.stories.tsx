@@ -66,7 +66,7 @@ export const DestructiveWithIcon: Story = {
 export const Custom: Story = {
     args: {
         children: 'Custom Yellow',
-        className: 'fluid:bg-[#fbe72b] fluid:text-black fluid:border-black fluid:border fluid:hover:bg-[#fbe72b]/90 fluid:hover:border-2',
+        className: 'fluid:bg-[#FBE72B] fluid:dark:bg-[#FBE72B] fluid:text-black fluid:dark:text-black fluid:border fluid:hover:bg-[#F4D000] fluid:dark:hover:bg-[#F4D000] fluid:transition-colors',
     },
 };
 

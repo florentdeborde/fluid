@@ -9,7 +9,7 @@ const meta: Meta<typeof Shell> = {
     },
     tags: ['autodocs'],
     argTypes: {
-        containerSize: {
+        width: {
             control: 'select',
             options: ['sm', 'md', 'lg', 'xl', 'full'],
         },
@@ -47,7 +47,7 @@ export const Default: Story = {
         </Shell>
     ),
     args: {
-        containerSize: 'md',
+        width: 'md',
     },
 };
 
@@ -63,6 +63,6 @@ export const Minimal: Story = {
         </Shell>
     ),
     args: {
-        containerSize: 'sm',
+        width: 'sm',
     },
 };

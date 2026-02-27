@@ -5,14 +5,14 @@ import { cn } from "../utils/cn"
 import type { ComponentSize, ComponentColor } from "../types/shared"
 
 const switchVariants = cva(
-  "fluid:peer fluid:inline-flex fluid:shrink-0 fluid:cursor-pointer fluid:items-center fluid:rounded-full fluid:border-2 fluid:border-transparent fluid:transition-colors fluid:focus-visible:outline-none fluid:focus-visible:ring-2 fluid:focus-visible:ring-blue-500 fluid:focus-visible:ring-offset-2 fluid:focus-visible:ring-offset-white fluid:disabled:cursor-not-allowed fluid:disabled:opacity-50",
+  "fluid:peer fluid:inline-flex fluid:shrink-0 fluid:cursor-pointer fluid:items-center fluid:rounded-full fluid:border-2 fluid:border-transparent fluid:transition-colors fluid:focus-visible:outline-none fluid:focus-visible:ring-2 fluid:focus-visible:ring-blue-500 fluid:focus-visible:ring-offset-2 fluid:focus-visible:ring-offset-white fluid:dark:focus-visible:ring-offset-neutral-950 fluid:disabled:cursor-not-allowed fluid:disabled:opacity-50",
   {
     variants: {
       color: {
-        primary: "fluid:data-[state=checked]:bg-blue-600 fluid:data-[state=unchecked]:bg-neutral-200",
-        destructive: "fluid:data-[state=checked]:bg-red-600 fluid:data-[state=unchecked]:bg-neutral-200",
-        success: "fluid:data-[state=checked]:bg-green-600 fluid:data-[state=unchecked]:bg-neutral-200",
-        neutral: "fluid:data-[state=checked]:bg-neutral-900 fluid:data-[state=unchecked]:bg-neutral-200",
+        primary: "fluid:data-[state=checked]:bg-blue-600 fluid:data-[state=unchecked]:bg-neutral-200 fluid:dark:data-[state=unchecked]:bg-neutral-700",
+        destructive: "fluid:data-[state=checked]:bg-red-600 fluid:data-[state=unchecked]:bg-neutral-200 fluid:dark:data-[state=unchecked]:bg-neutral-700",
+        success: "fluid:data-[state=checked]:bg-green-600 fluid:data-[state=unchecked]:bg-neutral-200 fluid:dark:data-[state=unchecked]:bg-neutral-700",
+        neutral: "fluid:data-[state=checked]:bg-neutral-900 fluid:data-[state=unchecked]:bg-neutral-200 fluid:dark:data-[state=checked]:bg-neutral-400 fluid:dark:data-[state=unchecked]:bg-neutral-700",
       },
       size: {
         sm: "fluid:h-5 fluid:w-9",
@@ -45,7 +45,7 @@ const thumbVariants = cva(
 
 export interface SwitchProps
   extends Omit<React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>, "color">,
-    VariantProps<typeof switchVariants> {
+  VariantProps<typeof switchVariants> {
   color?: ComponentColor;
   size?: ComponentSize;
 }

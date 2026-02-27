@@ -48,9 +48,9 @@ describe('Shell', () => {
         expect(screen.getByText('Deep Content')).toBeInTheDocument();
     });
 
-    it('applies the correct max-width class based on containerSize', () => {
+    it('applies the correct max-width class based on width prop', () => {
         const { container } = render(
-            <Shell containerSize="sm">
+            <Shell width="sm">
                 <ShellContent>Content</ShellContent>
             </Shell>
         );

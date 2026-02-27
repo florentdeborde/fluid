@@ -5,13 +5,13 @@ import { cn } from "../utils/cn";
 import type { ComponentSize } from "../types/shared";
 
 const inputVariants = cva(
-    "fluid:flex fluid:w-full fluid:rounded-md fluid:border fluid:border-neutral-200 fluid:bg-white fluid:transition-colors fluid:file:border-0 fluid:file:bg-transparent fluid:file:text-sm fluid:file:font-medium fluid:placeholder:text-neutral-500 fluid:focus-visible:outline-none fluid:focus-visible:ring-2 fluid:disabled:cursor-not-allowed fluid:disabled:opacity-50",
+    "fluid:flex fluid:w-full fluid:rounded-md fluid:border fluid:border-neutral-200 fluid:bg-white fluid:dark:border-neutral-700 fluid:dark:bg-neutral-950 fluid:dark:text-neutral-100 fluid:transition-colors fluid:file:border-0 fluid:file:bg-transparent fluid:file:text-sm fluid:file:font-medium fluid:placeholder:text-neutral-500 fluid:dark:placeholder:text-neutral-400 fluid:focus-visible:outline-none fluid:focus-visible:ring-2 fluid:disabled:cursor-not-allowed fluid:disabled:opacity-50",
     {
         variants: {
             variant: {
                 default: "fluid:focus-visible:ring-blue-500",
-                error: "fluid:border-red-500 fluid:text-red-900 fluid:focus-visible:ring-red-500",
-                success: "fluid:border-green-500 fluid:text-green-900 fluid:focus-visible:ring-green-500",
+                error: "fluid:border-red-500 fluid:text-red-900 fluid:focus-visible:ring-red-500 fluid:dark:border-red-500/50 fluid:dark:text-red-400",
+                success: "fluid:border-green-500 fluid:text-green-900 fluid:focus-visible:ring-green-500 fluid:dark:border-green-500/50 fluid:dark:text-green-400",
             },
             size: {
                 md: "fluid:h-10 fluid:px-3 fluid:py-2 fluid:text-sm",
@@ -99,7 +99,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     {inputElement}
                     <button
                         type="button"
-                        className="fluid:absolute fluid:right-3 fluid:top-1/2 fluid:-translate-y-1/2 fluid:text-neutral-500 fluid:hover:text-neutral-700 fluid:focus-visible:outline-none fluid:focus-visible:text-blue-500 fluid:transition-colors fluid:cursor-pointer"
+                        className="fluid:absolute fluid:right-3 fluid:top-1/2 fluid:-translate-y-1/2 fluid:text-neutral-500 fluid:hover:text-neutral-700 fluid:dark:hover:text-neutral-300 fluid:focus-visible:outline-none fluid:focus-visible:text-blue-500 fluid:transition-colors fluid:cursor-pointer"
                         onClick={() => setShowPassword(!showPassword)}
                         aria-label={showPassword ? "Hide password" : "Show password"}
                     >

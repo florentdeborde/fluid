@@ -11,7 +11,7 @@ const loaderVariants = cva(
                 primary: "fluid:[--loader-color:theme(colors.blue.600)]",
                 destructive: "fluid:[--loader-color:theme(colors.red-600)]",
                 success: "fluid:[--loader-color:theme(colors.green.600)]",
-                neutral: "fluid:[--loader-color:theme(colors.neutral.600)]",
+                neutral: "fluid:[--loader-color:theme(colors.neutral.600)] fluid:dark:[--loader-color:theme(colors.neutral.400)]",
             },
 
             size: {
@@ -114,7 +114,7 @@ LoaderSpinner.displayName = "LoaderSpinner";
 const LoaderText = ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
         className={cn(
-            "fluid:font-sans fluid:text-[0.9rem] fluid:text-neutral-500 fluid:tracking-[0.05em] fluid:uppercase fluid:animate-in fluid:fade-in fluid:slide-in-from-bottom-2 fluid:duration-500",
+            "fluid:font-sans fluid:text-[0.9rem] fluid:text-neutral-500 fluid:dark:text-neutral-400 fluid:tracking-[0.05em] fluid:uppercase fluid:animate-in fluid:fade-in fluid:slide-in-from-bottom-2 fluid:duration-500",
             className
         )}
         {...props}

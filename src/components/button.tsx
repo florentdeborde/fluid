@@ -29,28 +29,28 @@ const buttonVariants = cva(
         },
         compoundVariants: [
             // Solid Combinations
-            { variant: "solid", color: "primary", className: "fluid:bg-blue-600 fluid:text-white fluid:hover:bg-blue-700" },
-            { variant: "solid", color: "destructive", className: "fluid:bg-red-600 fluid:text-white fluid:hover:bg-red-700" },
-            { variant: "solid", color: "success", className: "fluid:bg-green-600 fluid:text-white fluid:hover:bg-green-700" },
-            { variant: "solid", color: "neutral", className: "fluid:bg-neutral-900 fluid:text-white fluid:hover:bg-neutral-950" },
+            { variant: "solid", color: "primary", className: "fluid:bg-blue-600 fluid:text-white fluid:hover:bg-blue-700 fluid:dark:bg-blue-600 fluid:dark:hover:bg-blue-700" },
+            { variant: "solid", color: "destructive", className: "fluid:bg-red-600 fluid:text-white fluid:hover:bg-red-700 fluid:dark:bg-red-600 fluid:dark:hover:bg-red-700" },
+            { variant: "solid", color: "success", className: "fluid:bg-green-600 fluid:text-white fluid:hover:bg-green-700 fluid:dark:bg-green-600 fluid:dark:hover:bg-green-700" },
+            { variant: "solid", color: "neutral", className: "fluid:bg-neutral-900 fluid:text-white fluid:hover:bg-neutral-950 fluid:dark:bg-white fluid:dark:text-neutral-900 fluid:dark:hover:bg-neutral-200" },
 
             // Outline Combinations
-            { variant: "outline", color: "primary", className: "fluid:border-blue-200 fluid:text-blue-600 fluid:hover:bg-blue-50" },
-            { variant: "outline", color: "destructive", className: "fluid:border-red-200 fluid:text-red-600 fluid:hover:bg-red-50" },
-            { variant: "outline", color: "success", className: "fluid:border-green-200 fluid:text-green-600 fluid:hover:bg-green-50" },
-            { variant: "outline", color: "neutral", className: "fluid:border-neutral-200 fluid:text-neutral-900 fluid:hover:bg-neutral-100" },
+            { variant: "outline", color: "primary", className: "fluid:border-blue-200 fluid:text-blue-600 fluid:hover:bg-blue-50 fluid:dark:border-blue-800 fluid:dark:text-blue-400 fluid:dark:hover:bg-blue-950/50" },
+            { variant: "outline", color: "destructive", className: "fluid:border-red-200 fluid:text-red-600 fluid:hover:bg-red-50 fluid:dark:border-red-800 fluid:dark:text-red-400 fluid:dark:hover:bg-red-950/50" },
+            { variant: "outline", color: "success", className: "fluid:border-green-200 fluid:text-green-600 fluid:hover:bg-green-50 fluid:dark:border-green-800 fluid:dark:text-green-400 fluid:dark:hover:bg-green-950/50" },
+            { variant: "outline", color: "neutral", className: "fluid:border-neutral-200 fluid:text-neutral-900 fluid:hover:bg-neutral-100 fluid:dark:border-neutral-800 fluid:dark:text-neutral-100 fluid:dark:hover:bg-neutral-900" },
 
             // Ghost Combinations
-            { variant: "ghost", color: "primary", className: "fluid:text-blue-600 fluid:hover:bg-blue-50 fluid:hover:border-blue-200" },
-            { variant: "ghost", color: "destructive", className: "fluid:text-red-600 fluid:hover:bg-red-50 fluid:hover:border-red-200" },
-            { variant: "ghost", color: "success", className: "fluid:text-green-600 fluid:hover:bg-green-50 fluid:hover:border-green-200" },
-            { variant: "ghost", color: "neutral", className: "fluid:text-neutral-600 fluid:hover:bg-neutral-100 fluid:hover:text-neutral-900 fluid:hover:border-neutral-200" },
+            { variant: "ghost", color: "primary", className: "fluid:text-blue-600 fluid:hover:bg-blue-50 fluid:hover:border-blue-200 fluid:dark:text-blue-400 fluid:dark:hover:bg-blue-950/50 fluid:dark:hover:border-blue-800" },
+            { variant: "ghost", color: "destructive", className: "fluid:text-red-600 fluid:hover:bg-red-50 fluid:hover:border-red-200 fluid:dark:text-red-400 fluid:dark:hover:bg-red-950/50 fluid:dark:hover:border-red-800" },
+            { variant: "ghost", color: "success", className: "fluid:text-green-600 fluid:hover:bg-green-50 fluid:hover:border-green-200 fluid:dark:text-green-400 fluid:dark:hover:bg-green-950/50 fluid:dark:hover:border-green-800" },
+            { variant: "ghost", color: "neutral", className: "fluid:text-neutral-600 fluid:hover:bg-neutral-100 fluid:hover:text-neutral-900 fluid:hover:border-neutral-200 fluid:dark:text-neutral-400 fluid:dark:hover:bg-neutral-900 fluid:dark:hover:text-neutral-100 fluid:dark:hover:border-neutral-800" },
 
             // Link Combinations
-            { variant: "link", color: "primary", className: "fluid:text-blue-600" },
-            { variant: "link", color: "destructive", className: "fluid:text-red-600" },
-            { variant: "link", color: "success", className: "fluid:text-green-600" },
-            { variant: "link", color: "neutral", className: "fluid:text-neutral-900" },
+            { variant: "link", color: "primary", className: "fluid:text-blue-600 fluid:dark:text-blue-400" },
+            { variant: "link", color: "destructive", className: "fluid:text-red-600 fluid:dark:text-red-400" },
+            { variant: "link", color: "success", className: "fluid:text-green-600 fluid:dark:text-green-400" },
+            { variant: "link", color: "neutral", className: "fluid:text-neutral-900 fluid:dark:text-neutral-100" },
         ],
         defaultVariants: {
             variant: "solid",

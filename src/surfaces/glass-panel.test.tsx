@@ -9,11 +9,11 @@ describe('GlassPanel Size & Props', () => {
         expect(screen.getByText('Content')).toBeInTheDocument();
     });
 
-    it('applies size variants correctly', () => {
-        const { rerender } = render(<GlassPanel size="sm">Small</GlassPanel>);
+    it('applies padding variants correctly', () => {
+        const { rerender } = render(<GlassPanel padding="sm">Small</GlassPanel>);
         expect(screen.getByText('Small')).toHaveClass('fluid:p-4');
 
-        rerender(<GlassPanel size="lg">Large</GlassPanel>);
+        rerender(<GlassPanel padding="lg">Large</GlassPanel>);
         expect(screen.getByText('Large')).toHaveClass('fluid:p-12');
 
     });
