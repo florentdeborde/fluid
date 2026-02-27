@@ -12,6 +12,7 @@ describe('Loader Component', () => {
         );
         const loader = screen.getByRole('status');
         expect(loader).toBeInTheDocument();
+        expect(loader).toHaveAttribute('aria-live', 'polite');
         expect(loader.querySelector('.fluid\\:animate-spin-custom')).toBeInTheDocument();
         expect(loader.querySelector('.fluid\\:animate-pulse-custom')).toBeInTheDocument();
 

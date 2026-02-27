@@ -2,6 +2,7 @@ import * as React from "react"
 import * as SwitchPrimitives from "@radix-ui/react-switch"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "../utils/cn"
+import { useFieldContext } from "./field"
 import type { ComponentSize, ComponentColor } from "../types/shared"
 
 const switchVariants = cva(
@@ -53,9 +54,14 @@ export interface SwitchProps
 const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
   SwitchProps
->(({ className, color, size, ...props }, ref) => {
+>(({ className, color, size, id, ...props }, ref) => {
+  const generatedId = React.useId();
+  const fieldContext = useFieldContext();
+  const finalId = id || fieldContext?.id || generatedId;
+
   return (
     <SwitchPrimitives.Root
+      id={finalId}
       className={cn(switchVariants({ color, size }), className)}
       {...props}
       ref={ref}

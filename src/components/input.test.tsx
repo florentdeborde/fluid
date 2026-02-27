@@ -69,6 +69,7 @@ describe('Input', () => {
         // Find the toggle button
         const button = screen.getByRole('button', { name: /show password/i });
         expect(button).toBeInTheDocument();
+        expect(button).toHaveAttribute('aria-expanded', 'false');
     });
 });
 

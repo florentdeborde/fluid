@@ -68,6 +68,7 @@ const Loader = React.forwardRef<HTMLDivElement, LoaderProps>(
                 <div
                     ref={ref}
                     role="status"
+                    aria-live="polite"
                     className={cn(loaderVariants({ color: currentColor, size: currentSize, className }))}
                     {...props}
                 >

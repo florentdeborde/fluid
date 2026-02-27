@@ -2,10 +2,11 @@ import * as React from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../utils/cn";
+import { useFieldContext } from "./field";
 import type { ComponentSize } from "../types/shared";
 
 const inputVariants = cva(
-    "fluid:flex fluid:w-full fluid:rounded-md fluid:border fluid:border-neutral-300 fluid:bg-neutral-200 fluid:dark:border-neutral-500 fluid:dark:bg-neutral-700 fluid:dark:text-neutral-100 fluid:transition-colors fluid:file:border-0 fluid:file:bg-transparent fluid:file:text-sm fluid:file:font-medium fluid:placeholder:text-neutral-500 fluid:dark:placeholder:text-neutral-400 fluid:focus-visible:outline-none fluid:focus-visible:ring-2 fluid:disabled:cursor-not-allowed fluid:disabled:opacity-50",
+    "fluid:flex fluid:w-full fluid:rounded-md fluid:border fluid:border-neutral-200 fluid:bg-neutral-100 fluid:dark:border-neutral-500 fluid:dark:bg-neutral-700 fluid:dark:text-neutral-100 fluid:transition-colors fluid:file:border-0 fluid:file:bg-transparent fluid:file:text-sm fluid:file:font-medium fluid:placeholder:text-neutral-500 fluid:dark:placeholder:text-neutral-400 fluid:focus-visible:outline-none fluid:focus-visible:ring-2 fluid:disabled:cursor-not-allowed fluid:disabled:opacity-50",
     {
         variants: {
             variant: {
@@ -59,7 +60,11 @@ const defaultPlaceholders: Record<string, string> = {
 };
 
 const InputComponent = React.forwardRef<HTMLInputElement, InputProps>(
-    ({ className, type, variant, size, error, success, ...props }, ref) => {
+    ({ className, type, variant, size, error, success, id, ...props }, ref) => {
+        const generatedId = React.useId();
+        const fieldContext = useFieldContext();
+        const finalId = id || fieldContext?.id || generatedId;
+
         const inputVariant = error ? "error" : success ? "success" : variant;
         const expectedType = type || "text";
         const resolvedPlaceholder = props.placeholder || defaultPlaceholders[expectedType] || undefined;
@@ -68,6 +73,7 @@ const InputComponent = React.forwardRef<HTMLInputElement, InputProps>(
             <input
                 type={type}
                 placeholder={resolvedPlaceholder}
+                id={finalId}
                 className={cn(
                     inputVariants({ variant: inputVariant, size, className })
                 )}
@@ -108,6 +114,7 @@ const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps>(
                     className="fluid:absolute fluid:right-3 fluid:top-1/2 fluid:-translate-y-1/2 fluid:text-neutral-500 fluid:dark:text-neutral-300 fluid:hover:text-neutral-800 fluid:dark:hover:text-neutral-100 fluid:focus-visible:outline-none fluid:focus-visible:text-blue-500 fluid:transition-colors fluid:cursor-pointer"
                     onClick={() => setShowPassword(!showPassword)}
                     aria-label={showPassword ? "Hide password" : "Show password"}
+                    aria-expanded={showPassword}
                 >
                     {showPassword ? (
                         <EyeOff className="fluid:size-4.5" />
