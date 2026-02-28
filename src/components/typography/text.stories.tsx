@@ -18,10 +18,6 @@ const meta: Meta<typeof Text> = {
             control: 'select',
             options: ['normal', 'medium', 'semibold', 'bold'],
         },
-        as: {
-            control: 'select',
-            options: ['p', 'span', 'div'],
-        },
     },
 };
 

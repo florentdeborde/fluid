@@ -16,8 +16,9 @@ export default defineConfig({
     react(),
     tailwindcss() as any,
     dts({
-      include: ['src'],
-      insertTypesEntry: true
+      tsconfigPath: './tsconfig.app.json',
+      rollupTypes: true,
+      insertTypesEntry: true,
     })
   ] as any[],
   build: {

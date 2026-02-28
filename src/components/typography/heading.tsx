@@ -33,9 +33,9 @@ export interface HeadingProps
     asChild?: boolean;
 }
 
-const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
+const Heading = React.forwardRef<HTMLElement, HeadingProps>(
     ({ className, level = 2, size, asChild = false, ...props }, ref) => {
-        const Comp = asChild ? Slot : (`h${level}` as "h1" | "h2" | "h3" | "h4" | "h5" | "h6");
+        const Comp = asChild ? Slot : (`h${level}` as any);
         const computedSize = size || `h${level}`;
 
         return (

@@ -41,7 +41,7 @@ export interface TextProps
     asChild?: boolean;
 }
 
-const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
+const Text = React.forwardRef<HTMLElement, TextProps>(
     ({ className, size, variant, weight, asChild = false, ...props }, ref) => {
         const Comp = asChild ? Slot : "p";
         return (
