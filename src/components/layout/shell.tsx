@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { ArrowLeft } from "lucide-react";
-import { cn } from "../utils/cn";
+import { cn } from "../../utils/cn";
 import { Heading, type HeadingProps } from "../typography/heading";
 import { Text, type TextProps } from "../typography/text";
-import type { WidthSize } from "../types/shared";
+import type { WidthSize } from "../../types/shared";
 
 /* -------------------------------------------------------------------------- */
 /*                                Shell BackLink                              */

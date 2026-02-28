@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Input } from './input';
-import { COMPONENT_SIZES } from '../types/shared';
+import { COMPONENT_SIZES } from '../../types/shared';
 
 const meta = {
-    title: 'Components/Input',
+    title: 'Atomic/Input',
     component: Input,
     parameters: {
         layout: 'padded',

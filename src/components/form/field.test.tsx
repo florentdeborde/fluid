@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { Field } from './field';
-import { Label } from './label';
-import { Input } from './input';
+import { Label } from '../atomic/label';
+import { Input } from '../atomic/input';
 
 describe('Field & Label', () => {
     it('automatically links Label and Input via context', () => {

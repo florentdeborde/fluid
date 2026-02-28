@@ -76,7 +76,12 @@ To start contributing or customizing the library locally:
 
 ## 📂 Project Structure
 
-- **src/components/**: UI components (Button, Input, Grid, etc.)
+- **src/components/**: Organized by category
+  - **atomic/**: Primitives (Button, Input, Switch, Spinner, Label)
+  - **form/**: Field grouping
+  - **layout/**: Structure components (Shell)
+  - **surface/**: Visual containers (GlassPanel)
+  - **typography/**: Text primitives (Heading, Text)
 - **src/index.ts**: Main library entry point
 - **src/index.css**: Global Tailwind 4 directives
 

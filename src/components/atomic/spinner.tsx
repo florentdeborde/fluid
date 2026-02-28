@@ -1,7 +1,7 @@
 import * as React from "react";
-import { cn } from "../utils/cn";
+import { cn } from "../../utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
-import type { ComponentSize, ComponentColor } from "../types/shared";
+import type { ComponentSize, ComponentColor } from "../../types/shared";
 
 const spinnerVariants = cva(
     "fluid:relative fluid:flex fluid:items-center fluid:justify-center fluid:animate-in fluid:fade-in fluid:duration-500",

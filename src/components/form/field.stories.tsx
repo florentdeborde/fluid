@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Field } from './field';
-import { Label } from './label';
-import { Input } from './input';
-import { Switch } from './switch';
+import { Label } from '../atomic/label';
+import { Input } from '../atomic/input';
+import { Switch } from '../atomic/switch';
 
 const meta = {
-    title: 'Components/Field',
+    title: 'Form/Field',
     component: Field,
     parameters: {
         layout: 'padded',

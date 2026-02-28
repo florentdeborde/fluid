@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Switch } from './switch';
-import { COMPONENT_SIZES, COMPONENT_COLORS } from '../types/shared';
+import { COMPONENT_SIZES, COMPONENT_COLORS } from '../../types/shared';
 
 const meta: Meta<typeof Switch> = {
-    title: 'Components/Switch',
+    title: 'Atomic/Switch',
     component: Switch,
     parameters: {
         layout: 'centered',

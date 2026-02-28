@@ -2,10 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { GlassPanel } from './glass-panel';
 import { Heading } from '../typography/heading';
 import { Text } from '../typography/text';
-import { PADDING_SIZES, WIDTH_SIZES } from '../types/shared';
+import { PADDING_SIZES, WIDTH_SIZES } from '../../types/shared';
 
 const meta: Meta<typeof GlassPanel> = {
-    title: 'Surfaces/GlassPanel',
+    title: 'Surface/GlassPanel',
     component: GlassPanel,
     tags: ['autodocs'],
     argTypes: {

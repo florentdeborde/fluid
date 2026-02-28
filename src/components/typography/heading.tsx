@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
-import { cn } from "../utils/cn";
+import { cn } from "../../utils/cn";
 
 const headingVariants = cva(
     "fluid:font-bold fluid:text-neutral-900 fluid:dark:text-white fluid:tracking-tight",

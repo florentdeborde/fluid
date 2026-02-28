@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Shell } from './shell';
-import { WIDTH_SIZES } from '../types/shared';
+import { WIDTH_SIZES } from '../../types/shared';
 
 const meta: Meta<typeof Shell> = {
     title: 'Layout/Shell',

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { cn } from "../utils/cn";
-import { useFieldContext } from "./field";
+import { cn } from "../../utils/cn";
+import { useFieldContext } from "../form/field";
 
 export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
     /** 

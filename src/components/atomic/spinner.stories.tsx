@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Spinner } from './spinner';
 import { Text } from '../typography/text';
-import { COMPONENT_SIZES, COMPONENT_COLORS } from '../types/shared';
+import { COMPONENT_SIZES, COMPONENT_COLORS } from '../../types/shared';
 
 const meta: Meta<typeof Spinner> = {
-    title: 'Components/Spinner',
+    title: 'Atomic/Spinner',
     component: Spinner,
     tags: ['autodocs'],
     argTypes: {

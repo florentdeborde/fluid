@@ -1,9 +1,9 @@
 import * as React from "react"
 import * as SwitchPrimitives from "@radix-ui/react-switch"
 import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "../utils/cn"
-import { useFieldContext } from "./field"
-import type { ComponentSize, ComponentColor } from "../types/shared"
+import { cn } from "../../utils/cn"
+import { useFieldContext } from "../form/field"
+import type { ComponentSize, ComponentColor } from "../../types/shared"
 
 const switchVariants = cva(
   "fluid:peer fluid:inline-flex fluid:shrink-0 fluid:cursor-pointer fluid:items-center fluid:rounded-full fluid:border-2 fluid:border-transparent fluid:transition-colors fluid:focus-visible:outline-none fluid:focus-visible:ring-2 fluid:focus-visible:ring-blue-500 fluid:focus-visible:ring-offset-2 fluid:focus-visible:ring-offset-white fluid:dark:focus-visible:ring-offset-neutral-950 fluid:disabled:cursor-not-allowed fluid:disabled:opacity-50 fluid:data-[state=checked]:bg-[var(--switch-color)] fluid:data-[state=unchecked]:bg-neutral-200 fluid:dark:data-[state=unchecked]:bg-neutral-700",

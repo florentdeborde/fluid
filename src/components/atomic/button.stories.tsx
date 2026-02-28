@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './button';
 import { Rocket, Trash2 } from 'lucide-react';
-import { COMPONENT_SIZES, COMPONENT_COLORS } from '../types/shared';
+import { COMPONENT_SIZES, COMPONENT_COLORS } from '../../types/shared';
 
 const meta: Meta<typeof Button> = {
-    title: 'Components/Button',
+    title: 'Atomic/Button',
     component: Button,
     parameters: {
         layout: 'centered',

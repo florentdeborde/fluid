@@ -1,6 +1,6 @@
 import * as React from "react";
-import { cn } from "../utils/cn";
-import type { PaddingSize, WidthSize } from "../types/shared";
+import { cn } from "../../utils/cn";
+import type { PaddingSize, WidthSize } from "../../types/shared";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const glassVariants = cva(
