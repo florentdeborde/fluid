@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Switch } from './switch';
-import { COMPONENT_SIZES } from '../types/shared';
+import { COMPONENT_SIZES, COMPONENT_COLORS } from '../types/shared';
 
 const meta: Meta<typeof Switch> = {
     title: 'Components/Switch',
@@ -12,7 +12,7 @@ const meta: Meta<typeof Switch> = {
     argTypes: {
         color: {
             control: 'select',
-            options: ['primary', 'destructive', 'success', 'neutral'],
+            options: COMPONENT_COLORS,
         },
         size: {
             control: 'select',
@@ -52,4 +52,10 @@ export const Sizes: Story = {
     )
 };
 
-
+export const Custom: Story = {
+    render: () => (
+        <div className="fluid:flex fluid:items-center fluid:gap-6">
+            <Switch size="md" defaultChecked className="fluid:[--switch-color:#ff6b00]" />
+        </div>
+    )
+};

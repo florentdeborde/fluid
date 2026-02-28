@@ -27,11 +27,11 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Text: Story = {
     args: {},
 };
 
-export const WithValue: Story = {
+export const TextWithDefaultValue: Story = {
     args: {
         defaultValue: 'Hello there!',
     },
