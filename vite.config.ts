@@ -14,32 +14,28 @@ const projectDir = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss() as any,
+    tailwindcss(),
     dts({
       tsconfigPath: './tsconfig.app.json',
       rollupTypes: true,
       insertTypesEntry: true,
     })
-  ] as any[],
+  ],
   build: {
     lib: {
-      entry: resolve(projectDir, 'src/index.ts'),
+      entry: {
+        index: resolve(projectDir, 'src/index.ts'),
+        fluid: resolve(projectDir, 'src/fluid.ts'),
+      },
       name: 'fluid',
-      formats: ['es', 'umd'],
-      fileName: (format: string) => `index.${format}.js`
+      formats: ['es'],
+      fileName: (_: string, entryName: string) => `${entryName}.js`
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'jsxRuntime'
-        }
-      }
     },
     target: 'esnext',
-    minify: 'esbuild'
+    minify: 'esbuild',
   },
   test: {
     projects: [
@@ -56,7 +52,7 @@ export default defineConfig({
         plugins: [
           storybookTest({
             configDir: path.join(projectDir, '.storybook')
-          }) as any
+          })
         ],
         test: {
           name: 'storybook',
@@ -70,5 +66,5 @@ export default defineConfig({
         }
       }
     ]
-  }
-} as any);
+  } as any
+});
