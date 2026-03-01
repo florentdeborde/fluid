@@ -98,13 +98,12 @@ export interface InputPasswordProps extends InputProps { }
 const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps>(
     ({ className, variant, ...props }, ref) => {
         const [showPassword, setShowPassword] = React.useState(false);
-        const inputVariant = variant || "password";
 
         return (
             <div className="fluid:relative fluid:w-full">
                 <InputComponent
                     type={showPassword ? "text" : "password"}
-                    variant={inputVariant as any}
+                    variant={variant}
                     className={cn("fluid:pr-10", className)}
                     ref={ref}
                     {...props}
