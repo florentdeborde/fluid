@@ -74,6 +74,9 @@ To start contributing or customizing the library locally:
 4. **Build the library**
 ```npm run build```
 
+5. **Generate API Documentation**
+```npm run docs```
+
 ## 📂 Project Structure
 
 - **src/components/**: Organized by category
@@ -95,6 +98,7 @@ To start contributing or customizing the library locally:
 - **Lucide React** — Clean and consistent iconography.
 - **Class Variance Authority (CVA)** — Efficient management of component variants and states.
 - **Vite Plugin DTS** — Automated generation of TypeScript declaration files.
+- **TypeDoc** — Automated API documentation generator from JSDoc comments.
 
 ## 🗺️ Roadmap & Future Evolutions
 
@@ -107,7 +111,7 @@ To start contributing or customizing the library locally:
   - [ ] Add overlay and status indicators: `Tooltip` and `Badge`.
 - [x] **Documentation**:
   - [x] Setup **Storybook 10** for interactive component documentation and testing.
-  - [x] Integrate comprehensive JSDoc comments for all component properties.
+  - [x] Integrate comprehensive JSDoc comments and generate **Automated API Reference** via TypeDoc.
 - [ ] **Quality Assurance**:
   - [ ] Reach 100% unit test coverage for core component logic.
   - [ ] Implement **Visual Regression Testing** to ensure UI consistency.
