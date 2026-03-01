@@ -31,7 +31,7 @@ const ShellBackLink = React.forwardRef<HTMLAnchorElement, ShellBackLinkProps>(
                 ref={ref}
                 href={!asChild ? targetHref : undefined}
                 className={cn(
-                    "fluid:absolute fluid:top-6 fluid:left-6 fluid:inline-flex fluid:items-center fluid:gap-2 fluid:text-neutral-500 fluid:no-underline fluid:font-semibold fluid:transition-all fluid:hover:text-neutral-900 fluid:dark:hover:text-neutral-100 fluid:hover:-translate-x-1 fluid:cursor-pointer",
+                    "fluid:inline-flex fluid:items-center fluid:gap-2 fluid:text-neutral-500 fluid:no-underline fluid:font-semibold fluid:transition-all fluid:hover:text-neutral-900 fluid:dark:hover:text-neutral-100 fluid:hover:-translate-x-1 fluid:cursor-pointer fluid:mb-4",
                     className
                 )}
 
@@ -110,7 +110,7 @@ const ShellComponent = React.forwardRef<HTMLDivElement, ShellProps>(
             <div
                 ref={ref}
                 className={cn(
-                    "fluid:container fluid:mx-auto fluid:px-6 fluid:py-12 fluid:relative fluid:flex fluid:flex-col fluid:gap-0",
+                    "fluid:container fluid:mx-auto fluid:px-6 fluid:py-12 fluid:flex fluid:flex-col fluid:gap-0",
                     widths[width],
                     className
                 )}
