@@ -1,9 +1,16 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
+import { axe } from 'vitest-axe';
 import { Heading } from './heading';
 
 describe('Heading', () => {
+    it('should have no accessibility violations', async () => {
+        const { container } = render(<Heading>Hello World</Heading>);
+        const results = await axe(container);
+        expect(results).toHaveNoViolations();
+    });
+
     it('renders an h2 by default', () => {
         render(<Heading data-testid="heading">Hello World</Heading>);
         const heading = screen.getByTestId('heading');

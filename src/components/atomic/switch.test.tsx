@@ -1,9 +1,15 @@
-
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
+import { axe } from 'vitest-axe';
 import { Switch } from './switch';
 
 describe('Switch', () => {
+    it('should have no accessibility violations', async () => {
+        const { container } = render(<Switch aria-label="Toggle" />);
+        const results = await axe(container);
+        expect(results).toHaveNoViolations();
+    });
+
     it('renders correctly with default props', () => {
         render(<Switch aria-label="Toggle" />);
         const switchElement = screen.getByRole('switch');

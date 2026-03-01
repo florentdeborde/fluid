@@ -1,9 +1,16 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
+import { axe } from 'vitest-axe';
 import { Text } from './text';
 
 describe('Text', () => {
+    it('should have no accessibility violations', async () => {
+        const { container } = render(<Text>Hello World</Text>);
+        const results = await axe(container);
+        expect(results).toHaveNoViolations();
+    });
+
     it('renders a p element by default', () => {
         render(<Text data-testid="text">Hello World</Text>);
         const text = screen.getByTestId('text');

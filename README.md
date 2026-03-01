@@ -99,6 +99,7 @@ To start contributing or customizing the library locally:
 - **Class Variance Authority (CVA)** — Efficient management of component variants and states.
 - **Vite Plugin DTS** — Automated generation of TypeScript declaration files.
 - **TypeDoc** — Automated API documentation generator from JSDoc comments.
+- **vitest-axe** — Automated accessibility testing for Vitest.
 
 ## 🗺️ Roadmap & Future Evolutions
 
@@ -113,7 +114,7 @@ To start contributing or customizing the library locally:
   - [x] Setup **Storybook 10** for interactive component documentation and testing.
   - [x] Integrate comprehensive JSDoc comments and generate **Automated API Reference** via TypeDoc.
 - [ ] **Quality Assurance**:
-  - [ ] Reach 100% unit test coverage for core component logic.
+  - [x] Integrate **Automated Accessibility Testing** using `vitest-axe`.
   - [ ] Implement **Visual Regression Testing** to ensure UI consistency.
 - [x] **Distribution & CI/CD**:
   - [x] Automate NPM publishing via GitHub Actions.

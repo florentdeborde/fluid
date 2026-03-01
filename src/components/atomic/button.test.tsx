@@ -1,9 +1,16 @@
 import '@testing-library/jest-dom/vitest';
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { axe } from 'vitest-axe';
 import { Button } from './button';
 
 describe('Button', () => {
+    it('should have no accessibility violations', async () => {
+        const { container } = render(<Button>Click me</Button>);
+        const results = await axe(container);
+        expect(results).toHaveNoViolations();
+    });
+
     it('renders correctly with default props', () => {
         render(<Button>Click me</Button>);
         const button = screen.getByRole('button', { name: /click me/i });

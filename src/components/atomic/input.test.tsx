@@ -1,9 +1,16 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
+import { axe } from 'vitest-axe';
 import { Input } from './input';
 
 describe('Input', () => {
+    it('should have no accessibility violations', async () => {
+        const { container } = render(<Input aria-label="Name" />);
+        const results = await axe(container);
+        expect(results).toHaveNoViolations();
+    });
+
     it('renders correctly', () => {
         render(<Input placeholder="Test input" />);
         const input = screen.getByPlaceholderText('Test input');
